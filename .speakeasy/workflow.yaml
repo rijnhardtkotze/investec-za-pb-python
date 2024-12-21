@@ -12,6 +12,9 @@ targets:
     investec:
         target: python
         source: SA PB Account Information
+        publish:
+            pypi:
+                token: $pypi_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/rijnhardtkotze/investec-za-pb/sa-pb-account-information-python-code-samples
