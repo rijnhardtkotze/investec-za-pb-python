@@ -5,8 +5,10 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.459.2
   generationVersion: 2.483.1
-  releaseVersion: 0.1.1
-  configChecksum: 851f93de946c5bc5cbaba0bb5e045d3d
+  releaseVersion: 0.1.2
+  configChecksum: c9b15e5a3fc6bf04ed154a2564fc0fa3
+  repoURL: https://github.com/rijnhardtkotze/investec-za-pb-python.git
+  installationURL: https://github.com/rijnhardtkotze/investec-za-pb-python.git
 features:
   python:
     additionalDependencies: 1.0.0
