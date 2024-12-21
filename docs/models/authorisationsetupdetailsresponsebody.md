@@ -1,0 +1,12 @@
+# AuthorisationsetupdetailsResponseBody
+
+Resource has been retrieved
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `data`                                                                                                  | [models.AuthorisationsetupdetailsData](../models/authorisationsetupdetailsdata.md)                      | :heavy_check_mark:                                                                                      | Set of elements used to define the authorisation setup details for the profile and account combination. |
+| `meta`                                                                                                  | [models.AuthorisationsetupdetailsMeta](../models/authorisationsetupdetailsmeta.md)                      | :heavy_check_mark:                                                                                      | Meta Data relevant to the payload                                                                       |
+| `links`                                                                                                 | [models.AuthorisationsetupdetailsLinks](../models/authorisationsetupdetailslinks.md)                    | :heavy_check_mark:                                                                                      | Links relevant to the payload                                                                           |

@@ -1,0 +1,9 @@
+# AuthorisersListA
+
+
+## Fields
+
+| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                        | *Optional[str]*                                                                                             | :heavy_minus_sign:                                                                                          | Authoriser A ID used when doing payments requiring authorisations where numberOfAuthorisationRequired is 1. |
+| `name`                                                                                                      | *Optional[str]*                                                                                             | :heavy_minus_sign:                                                                                          | Authoriser A name.                                                                                          |

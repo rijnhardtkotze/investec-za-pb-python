@@ -1,0 +1,312 @@
+lockVersion: 2.0.0
+id: 9da7e9a7-3501-4701-b932-661d9e12d555
+management:
+  docChecksum: 560fa6fa4db6b527afc1d7126fc9c902
+  docVersion: 1.0.0
+  speakeasyVersion: 1.459.2
+  generationVersion: 2.483.1
+  releaseVersion: 0.1.1
+  configChecksum: 851f93de946c5bc5cbaba0bb5e045d3d
+features:
+  python:
+    additionalDependencies: 1.0.0
+    core: 5.7.4
+    defaultEnabledRetries: 0.2.0
+    deprecations: 3.0.0
+    devContainers: 3.0.0
+    enumUnions: 0.1.0
+    envVarSecurityUsage: 0.3.2
+    flatRequests: 1.0.1
+    flattening: 3.1.0
+    globalSecurity: 3.0.2
+    globalSecurityCallbacks: 1.0.0
+    globalServerURLs: 3.1.0
+    groups: 3.0.0
+    methodArguments: 1.0.2
+    nameOverrides: 3.0.0
+    nullables: 1.0.0
+    oauth2ClientCredentials: 1.1.0
+    responseFormat: 1.0.1
+    retries: 3.0.2
+    sdkHooks: 1.0.0
+generatedFiles:
+  - .devcontainer/README.md
+  - .devcontainer/devcontainer.json
+  - .devcontainer/setup.sh
+  - .gitattributes
+  - .python-version
+  - .vscode/settings.json
+  - CONTRIBUTING.md
+  - USAGE.md
+  - docs/models/accountsaccounts.md
+  - docs/models/accountspendingtransactionsdata.md
+  - docs/models/accountspendingtransactionslinks.md
+  - docs/models/accountspendingtransactionsmeta.md
+  - docs/models/accountspendingtransactionsrequest.md
+  - docs/models/accountspendingtransactionsresponsebody.md
+  - docs/models/accountspendingtransactionsstatus.md
+  - docs/models/accountspendingtransactionstype.md
+  - docs/models/accountsresponsebody.md
+  - docs/models/accountstransactionsdata.md
+  - docs/models/accountstransactionslinks.md
+  - docs/models/accountstransactionsmeta.md
+  - docs/models/accountstransactionsrequest.md
+  - docs/models/accountstransactionsresponsebody.md
+  - docs/models/authorisationsetupdetailsdata.md
+  - docs/models/authorisationsetupdetailslinks.md
+  - docs/models/authorisationsetupdetailsmeta.md
+  - docs/models/authorisationsetupdetailsrequest.md
+  - docs/models/authorisationsetupdetailsresponsebody.md
+  - docs/models/authoriserslista.md
+  - docs/models/authoriserslistb.md
+  - docs/models/balancedata.md
+  - docs/models/balancelinks.md
+  - docs/models/balancemeta.md
+  - docs/models/balancerequest.md
+  - docs/models/balanceresponsebody.md
+  - docs/models/beneficiariesdata.md
+  - docs/models/beneficiarieslinks.md
+  - docs/models/beneficiariesmeta.md
+  - docs/models/beneficiariesresponsebody.md
+  - docs/models/beneficiarycategoriesdata.md
+  - docs/models/beneficiarycategorieslinks.md
+  - docs/models/beneficiarycategoriesmeta.md
+  - docs/models/beneficiarycategoriesresponsebody.md
+  - docs/models/data.md
+  - docs/models/documentrequest.md
+  - docs/models/documentsdata.md
+  - docs/models/documentslinks.md
+  - docs/models/documentsmeta.md
+  - docs/models/documentsrequest.md
+  - docs/models/documentsresponsebody.md
+  - docs/models/links.md
+  - docs/models/meta.md
+  - docs/models/paybeneficiarydata.md
+  - docs/models/paybeneficiarylinks.md
+  - docs/models/paybeneficiarymeta.md
+  - docs/models/paybeneficiaryrequest.md
+  - docs/models/paybeneficiaryrequestbody.md
+  - docs/models/paybeneficiaryresponsebody.md
+  - docs/models/paybeneficiarytransferresponses.md
+  - docs/models/paymentlist.md
+  - docs/models/pendingtransaction.md
+  - docs/models/period.md
+  - docs/models/profileaccountsdata.md
+  - docs/models/profileaccountslinks.md
+  - docs/models/profileaccountsmeta.md
+  - docs/models/profileaccountsrequest.md
+  - docs/models/profileaccountsresponsebody.md
+  - docs/models/profilebenefiariesdata.md
+  - docs/models/profilebenefiarieslinks.md
+  - docs/models/profilebenefiariesmeta.md
+  - docs/models/profilebenefiariesrequest.md
+  - docs/models/profilebenefiariesresponsebody.md
+  - docs/models/profilesdata.md
+  - docs/models/profileslinks.md
+  - docs/models/profilesmeta.md
+  - docs/models/profilesresponsebody.md
+  - docs/models/security.md
+  - docs/models/status.md
+  - docs/models/transactions.md
+  - docs/models/transferdata.md
+  - docs/models/transferlinks.md
+  - docs/models/transferlist.md
+  - docs/models/transfermeta.md
+  - docs/models/transferrequestbody.md
+  - docs/models/transferresponse.md
+  - docs/models/transferresponsebody.md
+  - docs/models/transferresponses.md
+  - docs/models/transfertransferresponses.md
+  - docs/models/transferv2data.md
+  - docs/models/transferv2links.md
+  - docs/models/transferv2meta.md
+  - docs/models/transferv2request.md
+  - docs/models/transferv2requestbody.md
+  - docs/models/transferv2responsebody.md
+  - docs/models/transferv2transferlist.md
+  - docs/models/type.md
+  - docs/models/utils/retryconfig.md
+  - docs/sdks/accounts/README.md
+  - docs/sdks/beneficiaries/README.md
+  - docs/sdks/documents/README.md
+  - docs/sdks/interaccounttransfers/README.md
+  - docs/sdks/investec/README.md
+  - docs/sdks/profiles/README.md
+  - poetry.toml
+  - py.typed
+  - pylintrc
+  - pyproject.toml
+  - scripts/prepare-readme.py
+  - scripts/publish.sh
+  - src/investec_za_pb/__init__.py
+  - src/investec_za_pb/_hooks/__init__.py
+  - src/investec_za_pb/_hooks/clientcredentials.py
+  - src/investec_za_pb/_hooks/sdkhooks.py
+  - src/investec_za_pb/_hooks/types.py
+  - src/investec_za_pb/_version.py
+  - src/investec_za_pb/accounts.py
+  - src/investec_za_pb/basesdk.py
+  - src/investec_za_pb/beneficiaries.py
+  - src/investec_za_pb/documents.py
+  - src/investec_za_pb/httpclient.py
+  - src/investec_za_pb/interaccounttransfers.py
+  - src/investec_za_pb/models/__init__.py
+  - src/investec_za_pb/models/accountsop.py
+  - src/investec_za_pb/models/accountspendingtransactionsop.py
+  - src/investec_za_pb/models/accountstransactionsop.py
+  - src/investec_za_pb/models/apierror.py
+  - src/investec_za_pb/models/authorisationsetupdetailsop.py
+  - src/investec_za_pb/models/balanceop.py
+  - src/investec_za_pb/models/beneficiariesop.py
+  - src/investec_za_pb/models/beneficiarycategoriesop.py
+  - src/investec_za_pb/models/documentop.py
+  - src/investec_za_pb/models/documentsop.py
+  - src/investec_za_pb/models/paybeneficiaryop.py
+  - src/investec_za_pb/models/profileaccountsop.py
+  - src/investec_za_pb/models/profilebenefiariesop.py
+  - src/investec_za_pb/models/profilesop.py
+  - src/investec_za_pb/models/security.py
+  - src/investec_za_pb/models/transferop.py
+  - src/investec_za_pb/models/transferv2op.py
+  - src/investec_za_pb/profiles.py
+  - src/investec_za_pb/py.typed
+  - src/investec_za_pb/sdk.py
+  - src/investec_za_pb/sdkconfiguration.py
+  - src/investec_za_pb/types/__init__.py
+  - src/investec_za_pb/types/basemodel.py
+  - src/investec_za_pb/utils/__init__.py
+  - src/investec_za_pb/utils/annotations.py
+  - src/investec_za_pb/utils/enums.py
+  - src/investec_za_pb/utils/eventstreaming.py
+  - src/investec_za_pb/utils/forms.py
+  - src/investec_za_pb/utils/headers.py
+  - src/investec_za_pb/utils/logger.py
+  - src/investec_za_pb/utils/metadata.py
+  - src/investec_za_pb/utils/queryparams.py
+  - src/investec_za_pb/utils/requestbodies.py
+  - src/investec_za_pb/utils/retries.py
+  - src/investec_za_pb/utils/security.py
+  - src/investec_za_pb/utils/serializers.py
+  - src/investec_za_pb/utils/url.py
+  - src/investec_za_pb/utils/values.py
+examples:
+  accounts:
+    "":
+      responses:
+        "200":
+          application/json: {"data": {"accounts": [{"accountId": "3353431574710163189587446", "accountNumber": "10101010101", "accountName": "Mr John Doe", "referenceName": "My Investec Private Bank Account", "productName": "Private Bank Account", "kycCompliant": true, "profileId": "10163189587443", "profileName": "My Profile"}]}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts"}, "meta": {"totalPages": 1}}
+  balance:
+    "":
+      parameters:
+        path:
+          accountId: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"accountId": "172878438321553632224", "currentBalance": 28857.76, "availableBalance": 98857.76, "budgetBalance": 0, "straightBalance": 0, "cashBalance": -10818415.98, "currency": "ZAR"}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/balance"}, "meta": {"totalPages": 1}}
+  accountsTransactions:
+    "":
+      parameters:
+        path:
+          accountId: "<id>"
+        query:
+          fromDate: "2021-05-01"
+          toDate: "2021-06-01"
+          transactionType: "FeesAndInterest"
+      responses:
+        "200":
+          application/json: {"data": {"transactions": [{"accountId": "172878438321553632224", "type": "DEBIT", "transactionType": "FeesAndInterest", "status": "POSTED", "description": "MONTHLY SERVICE CHARGE", "cardNumber": "", "postedOrder": 13379, "postingDate": "2020-06-11", "valueDate": "2020-06-10", "actionDate": "2020-11-10", "transactionDate": "2020-06-10", "amount": 535, "runningBalance": 28857.76}, {"accountId": "172878438321553632224", "type": "CREDIT", "transactionType": "FeesAndInterest", "status": "POSTED", "description": "CREDIT INTEREST", "cardNumber": "", "postedOrder": 13378, "postingDate": "2020-06-11", "valueDate": "2020-06-10", "actionDate": "2020-11-10", "transactionDate": "2020-06-10", "amount": 31.09, "runningBalance": 29392.76}]}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/transactions?fromDate={fromDate}&toDate={toDate}&transactionType={transactionType}"}, "meta": {"totalPages": 1}}
+  accountsPendingTransactions:
+    "":
+      parameters:
+        path:
+          accountId: "<id>"
+      responses:
+        "200":
+          application/json: {"links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/pending-transactions"}, "meta": {"totalPages": 1}}
+  profiles:
+    "":
+      responses:
+        "200":
+          application/json: {"data": [{"profileId": "10163189587444", "profileName": "Profile A", "defaultProfile": true}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles"}}
+  profileaccounts:
+    "":
+      parameters:
+        path:
+          profileid: "10190798011073"
+      responses:
+        "200":
+          application/json: {"data": [{"accountId": "172878438321553632224", "accountNumber": "10010206147", "accountName": "Mr John Doe", "referenceName": "My Investec Private Bank Account", "productName": "Private Bank Account", "kycCompliant": true, "profileId": "10163189587443", "profileName": "My Profile"}], "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/{profileid}/accounts"}, "meta": {"totalPages": 1}}
+  authorisationsetupdetails:
+    "":
+      parameters:
+        path:
+          profileid: "4643233712010169349094403"
+          accountid: "10190798011073"
+      responses:
+        "200":
+          application/json: {"data": {"numberOfAuthorisationRequired": "2", "period": [{"id": "1"}, {"id": "2"}, {"id": "3"}, {"id": "4"}, {"id": "5"}, {"id": "6"}, {"id": "7"}, {"id": "8"}, {"id": "9"}, {"id": "10"}, {"id": "0"}], "authorisersListA": [{"name": "Mr Auth 1"}, {"name": "Mr Auth 2"}, {"name": "All"}], "authorisersListB": [{"name": "Mr Auth 3"}, {"name": "Mr Auth 4"}, {"name": "All"}]}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/{profileid}/accounts/{accountId}/authorisationsetupdetails"}}
+  profilebenefiaries:
+    "":
+      parameters:
+        path:
+          profileid: "4643233712010169349094403"
+          accountid: "10190798011073"
+      responses:
+        "200":
+          application/json: {"data": [{"beneficiaryId": "MTAxOTAxOTyNTQMTU=", "accountNumber": "6241708900", "code": "250655", "bank": "FIRST NATIONAL BANK", "beneficiaryName": "Ad A AIA", "lastPaymentAmount": "10.00", "lastPaymentDate": "10/03/2019", "cellNo": "0987654321", "emailAddress": "QUwCV@someweb.co.za", "name": "DccIcIXI", "referenceAccountNumber": "NIC036", "referenceName": "amingFra ing Framin", "categoryId": "10164601247279", "profileId": "10163189587443", "fasterPaymentAllowed": true}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/{profileid}/accounts/{accountid}/beneficiaries"}}
+  transfer:
+    "":
+      requestBody:
+        application/json: {"accountId": "XXXXXX", "transferList": [{"beneficiaryAccountId": "XXXXXXXXXX", "amount": "10.12", "myReference": "Trans from PBA to PS", "theirReference": "Trans from PBA to PS"}]}
+      responses:
+        "200":
+          application/json: {"data": {"transferResponse": {"TransferResponses": [{"PaymentReferenceNumber": "UBP0012345678", "PaymentDate": "06/04/2022", "Status": "- No authorisation necessary <BR>- Payment/Transfer effective date 06/04/2022", "BeneficiaryName": "API transfer", "BeneficiaryAccountId": "XXXXXXXXXX", "AuthorisationRequired": false}], "ErrorMessage": null}}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/transfermultiple"}}
+  transferv2:
+    "":
+      parameters:
+        path:
+          accountId: "<id>"
+      requestBody:
+        application/json: {"transferList": [{"beneficiaryAccountId": "XXXXXXXXXX", "amount": "10.12", "myReference": "Trans from PBA to PS", "theirReference": "Trans from PBA to PS"}], "profileId": "10163189587443"}
+      responses:
+        "200":
+          application/json: {"data": {"TransferResponses": [{"PaymentReferenceNumber": "UBP0012345678", "PaymentDate": "06/04/2022", "Status": "- No authorisation necessary <BR>- Payment/Transfer effective date 06/04/2022", "BeneficiaryName": "API transfer", "BeneficiaryAccountId": "XXXXXXXXXX", "AuthorisationRequired": false}], "ErrorMessage": null}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/172878438321553632224/transfermultiple"}}
+  payBeneficiary:
+    "":
+      parameters:
+        path:
+          accountId: "3353431574710163189587446"
+      requestBody:
+        application/json: {"paymentList": [{"beneficiaryId": "MTAxMDEwMTAxMDEwMTA=", "amount": "101", "myReference": "Beneficiary payment to", "theirReference": "Payment from Sandbox"}]}
+      responses:
+        "200":
+          application/json: {"data": {"TransferResponses": [{"PaymentReferenceNumber": "UBP0012345678", "PaymentDate": "06/04/2022", "Status": "- No authorisation necessary <BR>- Payment/Transfer effective date 06/04/2022", "BeneficiaryName": "API transfer", "BeneficiaryAccountId": "XXXXXXXXXX", "AuthorisationRequired": false}], "ErrorMessage": null}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/paymultiple"}}
+  beneficiaries:
+    "":
+      responses:
+        "200":
+          application/json: {"data": [{"beneficiaryId": "MTAxOTAxOTyNTQMTU=", "accountNumber": "6241708900", "code": "250655", "bank": "FIRST NATIONAL BANK", "beneficiaryName": "Ad A AIA", "lastPaymentAmount": "10.00", "lastPaymentDate": "10/03/2019", "cellNo": "0987654321", "emailAddress": "QUwCV@someweb.co.za", "name": "DccIcIXI", "referenceAccountNumber": "NIC036", "referenceName": "amingFra ing Framin", "categoryId": "10164601247279", "profileId": "10163189587443", "fasterPaymentAllowed": true}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/10163189587443/accounts/3353431574710163189587446/beneficiaries"}}
+  beneficiaryCategories:
+    "":
+      responses:
+        "200":
+          application/json: {"data": {"id": "10164601247279", "isDefault": "true", "name": "Not Categorised"}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/beneficiarycategories"}}
+  documents:
+    "":
+      parameters:
+        path:
+          accountId: "<id>"
+        query:
+          fromDate: "2023-04-01"
+          toDate: "2023-06-01"
+      responses:
+        "200":
+          application/json: {"data": [{"documentType": "Statement", "documentDate": "2023-03-16"}, {"documentType": "Statement", "documentDate": "2023-02-16"}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/documents?fromDate={fromDate}&toDate={toDate}"}}
+  document:
+    speakeasy-default-document:
+      parameters:
+        path:
+          accountId: "<id>"
+          documentType: "<value>"
+          documentDate: "<value>"
+generatedTests: {}

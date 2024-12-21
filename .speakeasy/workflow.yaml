@@ -1,0 +1,18 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    SA PB Account Information:
+        inputs:
+            - location: schema.json
+        overlays:
+            - location: .speakeasy/speakeasy-modifications-overlay.yaml
+        registry:
+            location: registry.speakeasyapi.dev/rijnhardtkotze/investec-za-pb/sa-pb-account-information
+targets:
+    investec:
+        target: python
+        source: SA PB Account Information
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/rijnhardtkotze/investec-za-pb/sa-pb-account-information-python-code-samples
+            blocking: false

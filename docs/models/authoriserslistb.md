@@ -1,0 +1,9 @@
+# AuthorisersListB
+
+
+## Fields
+
+| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                        | *Optional[str]*                                                                                             | :heavy_minus_sign:                                                                                          | Authoriser B ID used when doing payments requiring authorisations where numberOfAuthorisationRequired is 2. |
+| `name`                                                                                                      | *Optional[str]*                                                                                             | :heavy_minus_sign:                                                                                          | Authoriser B name.                                                                                          |

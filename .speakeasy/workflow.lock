@@ -1,0 +1,36 @@
+speakeasyVersion: 1.459.2
+sources:
+    SA PB Account Information:
+        sourceNamespace: sa-pb-account-information
+        sourceRevisionDigest: sha256:3b535e87c78a3f4b3011d205a338b237005d0df666ba5e96adc1e7cba75d5e1f
+        sourceBlobDigest: sha256:b98acc89286f7453d39d31e27ad325f9396ea11659e462bd56ce8ce6b79d0343
+        tags:
+            - latest
+            - 1.0.0
+targets:
+    investec:
+        source: SA PB Account Information
+        sourceNamespace: sa-pb-account-information
+        sourceRevisionDigest: sha256:3b535e87c78a3f4b3011d205a338b237005d0df666ba5e96adc1e7cba75d5e1f
+        sourceBlobDigest: sha256:b98acc89286f7453d39d31e27ad325f9396ea11659e462bd56ce8ce6b79d0343
+        codeSamplesNamespace: sa-pb-account-information-python-code-samples
+        codeSamplesRevisionDigest: sha256:3038d45835116ff143611cdcf4eb359e94766ac5e4a77ae34d3f42ce96ac8f87
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        SA PB Account Information:
+            inputs:
+                - location: schema.json
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
+            registry:
+                location: registry.speakeasyapi.dev/rijnhardtkotze/investec-za-pb/sa-pb-account-information
+    targets:
+        investec:
+            target: python
+            source: SA PB Account Information
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/rijnhardtkotze/investec-za-pb/sa-pb-account-information-python-code-samples
+                blocking: false

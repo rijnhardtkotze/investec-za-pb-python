@@ -1,0 +1,156 @@
+overlay: 1.0.0
+info:
+  title: Speakeasy Modifications
+  version: 0.0.2
+  x-speakeasy-metadata:
+    after: ""
+    before: ""
+    type: speakeasy-modifications
+actions:
+  - target: $["paths"]["/za/pb/v1/accounts/{accountId}/transfermultiple"]["post"]
+    update:
+      x-speakeasy-group: interAccountTransfers
+      x-speakeasy-name-override: transferV2
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Inter account transfers.transferv2()
+      after: sdk.interAccountTransfers.transferV2()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/profiles/{profileid}/accounts/{accountid}/authorisationsetupdetails"]["get"]
+    update:
+      x-speakeasy-group: accounts
+      x-speakeasy-name-override: getAuthorizationSetup
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Account information.authorisationsetupdetails()
+      after: sdk.accounts.getAuthorizationSetup()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/accounts/{accountId}/paymultiple"]["post"]
+    update:
+      x-speakeasy-group: beneficiaries
+      x-speakeasy-name-override: payMultiple
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Beneficiaries and Beneficiary payments.payBeneficiary()
+      after: sdk.beneficiaries.payMultiple()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/accounts/{accountId}/pending-transactions"]["get"]
+    update:
+      x-speakeasy-group: accounts
+      x-speakeasy-name-override: getPendingTransactions
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Account information.accountsPendingTransactions()
+      after: sdk.accounts.getPendingTransactions()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/accounts/{accountId}/balance"]["get"]
+    update:
+      x-speakeasy-group: accounts
+      x-speakeasy-name-override: getBalance
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Account information.balance()
+      after: sdk.accounts.getBalance()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/accounts/{accountId}/transactions"]["get"]
+    update:
+      x-speakeasy-group: accounts
+      x-speakeasy-name-override: getTransactions
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Account information.accountsTransactions()
+      after: sdk.accounts.getTransactions()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/accounts/beneficiaries"]["get"]
+    update:
+      x-speakeasy-group: beneficiaries
+      x-speakeasy-name-override: getAll
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Beneficiaries and Beneficiary payments.beneficiaries()
+      after: sdk.beneficiaries.getAll()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/accounts"]["get"]
+    update:
+      x-speakeasy-group: accounts
+      x-speakeasy-name-override: getAll
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Account information.accounts()
+      after: sdk.accounts.getAll()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/accounts/beneficiarycategories"]["get"]
+    update:
+      x-speakeasy-group: beneficiaries
+      x-speakeasy-name-override: getCategories
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Beneficiaries and Beneficiary payments.beneficiaryCategories()
+      after: sdk.beneficiaries.getCategories()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/profiles/{profileid}/accounts/{accountid}/beneficiaries"]["get"]
+    update:
+      x-speakeasy-group: accounts
+      x-speakeasy-name-override: getProfileBeneficiaries
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Account information.profilebenefiaries()
+      after: sdk.accounts.getProfileBeneficiaries()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/profiles/{profileid}/accounts"]["get"]
+    update:
+      x-speakeasy-group: accounts
+      x-speakeasy-name-override: getProfileAccounts
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Account information.profileaccounts()
+      after: sdk.accounts.getProfileAccounts()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/profiles"]["get"]
+    update:
+      x-speakeasy-group: profiles
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Account information.profiles()
+      after: sdk.profiles.get()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/accounts/transfermultiple"]["post"]
+    update:
+      x-speakeasy-group: interAccountTransfers
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Inter account transfers.transfer()
+      after: sdk.interAccountTransfers.transfer()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/accounts/{accountId}/document/{documentType}/{documentDate}"]["get"]
+    update:
+      x-speakeasy-name-override: getSpecific
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Documents.document()
+      after: sdk.documents.getSpecific()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
+  - target: $["paths"]["/za/pb/v1/accounts/{accountId}/documents"]["get"]
+    update:
+      x-speakeasy-name-override: getAll
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Documents.documents()
+      after: sdk.documents.getAll()
+      reviewed_at: 1734768971273
+      created_at: 1734768951558
