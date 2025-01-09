@@ -144,10 +144,6 @@ More information about the API can be found at .
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-> [!TIP]
-> To finish publishing your SDK to PyPI you must [run your first generation action](https://www.speakeasy.com/docs/github-setup#step-by-step-guide).
-
-
 The SDK can be installed with either *pip* or *poetry* package managers.
 
 ### PIP
@@ -155,7 +151,7 @@ The SDK can be installed with either *pip* or *poetry* package managers.
 *PIP* is the default package installer for Python, enabling easy installation and management of packages from PyPI via the command line.
 
 ```bash
-pip install git+https://github.com/rijnhardtkotze/investec-za-pb-python.git
+pip install investec-za-pb
 ```
 
 ### Poetry
@@ -163,7 +159,7 @@ pip install git+https://github.com/rijnhardtkotze/investec-za-pb-python.git
 *Poetry* is a modern tool that simplifies dependency management and package publishing by using a single `pyproject.toml` file to handle project metadata and dependencies.
 
 ```bash
-poetry add git+https://github.com/rijnhardtkotze/investec-za-pb-python.git
+poetry add investec-za-pb
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -184,15 +180,11 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 
 ```python
 # Synchronous Example
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_all()
@@ -207,16 +199,12 @@ The same SDK client can also be used to make asychronous requests by importing a
 ```python
 # Asynchronous Example
 import asyncio
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
 async def main():
     async with Investec(
-        security=investec_za_pb.Security(
-            client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-            client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-        ),
+        oauth2=os.getenv("INVESTEC_OAUTH2", ""),
     ) as investec:
 
         res = await investec.accounts.get_all_async()
@@ -235,21 +223,17 @@ asyncio.run(main())
 
 This SDK supports the following security scheme globally:
 
-| Name                            | Type   | Scheme                         | Environment Variable                                                       |
-| ------------------------------- | ------ | ------------------------------ | -------------------------------------------------------------------------- |
-| `client_id`<br/>`client_secret` | oauth2 | OAuth2 Client Credentials Flow | `INVESTEC_CLIENT_ID`<br/>`INVESTEC_CLIENT_SECRET`<br/>`INVESTEC_TOKEN_URL` |
+| Name     | Type   | Scheme       | Environment Variable |
+| -------- | ------ | ------------ | -------------------- |
+| `oauth2` | oauth2 | OAuth2 token | `INVESTEC_OAUTH2`    |
 
-You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
+To authenticate with the API the `oauth2` parameter must be set when initializing the SDK client instance. For example:
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_all()
@@ -307,16 +291,12 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 from investec_za_pb.utils import BackoffStrategy, RetryConfig
 import os
 
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_all(,
@@ -329,17 +309,13 @@ with Investec(
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 from investec_za_pb.utils import BackoffStrategy, RetryConfig
 import os
 
 with Investec(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_all()
@@ -373,15 +349,11 @@ When custom error responses are specified for an operation, the SDK may also rai
 ### Example
 
 ```python
-import investec_za_pb
 from investec_za_pb import Investec, models
 import os
 
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
     res = None
     try:
@@ -404,16 +376,12 @@ with Investec(
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
 with Investec(
     server_url="https://openapi.investec.com",
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_all()

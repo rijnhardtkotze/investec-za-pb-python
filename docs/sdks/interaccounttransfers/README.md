@@ -17,15 +17,11 @@ Transfer funds to one or multiple accounts.
 ### Example Usage
 
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.inter_account_transfers.transfer(account_id="XXXXXX", transfer_list=[
@@ -67,15 +63,11 @@ Transfer funds to one or multiple accounts.
 ### Example Usage
 
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.inter_account_transfers.transfer_v2(account_id="<id>", transfer_list=[

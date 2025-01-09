@@ -14,7 +14,7 @@ from investec_za_pb.documents import Documents
 from investec_za_pb.interaccounttransfers import InterAccountTransfers
 from investec_za_pb.profiles import Profiles
 from investec_za_pb.types import OptionalNullable, UNSET
-from typing import Callable, Dict, Optional, Union
+from typing import Any, Callable, Dict, Optional, Union
 
 
 class Investec(BaseSDK):
@@ -126,9 +126,7 @@ class Investec(BaseSDK):
 
     def __init__(
         self,
-        security: Optional[
-            Union[models.Security, Callable[[], models.Security]]
-        ] = None,
+        oauth2: Optional[Union[Optional[str], Callable[[], Optional[str]]]] = None,
         server_idx: Optional[int] = None,
         server_url: Optional[str] = None,
         url_params: Optional[Dict[str, str]] = None,
@@ -140,7 +138,7 @@ class Investec(BaseSDK):
     ) -> None:
         r"""Instantiates the SDK configuring it with the provided parameters.
 
-        :param security: The security details required for authentication
+        :param oauth2: The oauth2 required for authentication
         :param server_idx: The index of the server to use for all methods
         :param server_url: The server URL to use for all methods
         :param url_params: Parameters to optionally template the server URL with
@@ -165,6 +163,12 @@ class Investec(BaseSDK):
         assert issubclass(
             type(async_client), AsyncHttpClient
         ), "The provided async_client must implement the AsyncHttpClient protocol."
+
+        security: Any = None
+        if callable(oauth2):
+            security = lambda: models.Security(oauth2=oauth2())  # pylint: disable=unnecessary-lambda-assignment
+        else:
+            security = models.Security(oauth2=oauth2)
 
         if server_url is not None:
             if url_params is not None:

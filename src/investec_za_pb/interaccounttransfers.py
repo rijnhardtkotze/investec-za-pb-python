@@ -51,7 +51,7 @@ class InterAccountTransfers(BaseSDK):
             ),
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/za/pb/v1/accounts/transfermultiple",
             base_url=base_url,
@@ -81,7 +81,7 @@ class InterAccountTransfers(BaseSDK):
         http_res = self.do_request(
             hook_ctx=HookContext(
                 operation_id="transfer",
-                oauth2_scopes=["accounts", "transfers"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -151,7 +151,7 @@ class InterAccountTransfers(BaseSDK):
             ),
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/za/pb/v1/accounts/transfermultiple",
             base_url=base_url,
@@ -181,7 +181,7 @@ class InterAccountTransfers(BaseSDK):
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
                 operation_id="transfer",
-                oauth2_scopes=["accounts", "transfers"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -256,7 +256,7 @@ class InterAccountTransfers(BaseSDK):
             ),
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/za/pb/v1/accounts/{accountId}/transfermultiple",
             base_url=base_url,
@@ -286,7 +286,7 @@ class InterAccountTransfers(BaseSDK):
         http_res = self.do_request(
             hook_ctx=HookContext(
                 operation_id="transferv2",
-                oauth2_scopes=["accounts", "transfers"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -361,7 +361,7 @@ class InterAccountTransfers(BaseSDK):
             ),
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/za/pb/v1/accounts/{accountId}/transfermultiple",
             base_url=base_url,
@@ -391,7 +391,7 @@ class InterAccountTransfers(BaseSDK):
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
                 operation_id="transferv2",
-                oauth2_scopes=["accounts", "transfers"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),

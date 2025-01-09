@@ -33,7 +33,7 @@ class Profiles(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/profiles",
             base_url=base_url,
@@ -60,7 +60,7 @@ class Profiles(BaseSDK):
         http_res = self.do_request(
             hook_ctx=HookContext(
                 operation_id="profiles",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -113,7 +113,7 @@ class Profiles(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/profiles",
             base_url=base_url,
@@ -140,7 +140,7 @@ class Profiles(BaseSDK):
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
                 operation_id="profiles",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),

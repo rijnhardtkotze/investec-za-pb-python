@@ -1,20 +1,21 @@
 lockVersion: 2.0.0
 id: 9da7e9a7-3501-4701-b932-661d9e12d555
 management:
-  docChecksum: 560fa6fa4db6b527afc1d7126fc9c902
+  docChecksum: c3923c2245d464f7f8ed9ddd6c60ba0c
   docVersion: 1.0.0
-  speakeasyVersion: 1.459.2
-  generationVersion: 2.483.1
-  releaseVersion: 0.1.2
-  configChecksum: c9b15e5a3fc6bf04ed154a2564fc0fa3
+  speakeasyVersion: 1.465.1
+  generationVersion: 2.488.4
+  releaseVersion: 0.2.0
+  configChecksum: 5ba645f7d9780d071cd060c82b67e3cf
   repoURL: https://github.com/rijnhardtkotze/investec-za-pb-python.git
   installationURL: https://github.com/rijnhardtkotze/investec-za-pb-python.git
+  published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    core: 5.7.4
+    core: 5.7.6
     defaultEnabledRetries: 0.2.0
-    deprecations: 3.0.0
+    deprecations: 3.0.2
     devContainers: 3.0.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.2
@@ -22,12 +23,12 @@ features:
     flattening: 3.1.0
     globalSecurity: 3.0.2
     globalSecurityCallbacks: 1.0.0
+    globalSecurityFlattening: 1.0.0
     globalServerURLs: 3.1.0
     groups: 3.0.0
     methodArguments: 1.0.2
-    nameOverrides: 3.0.0
+    nameOverrides: 3.0.1
     nullables: 1.0.0
-    oauth2ClientCredentials: 1.1.0
     responseFormat: 1.0.1
     retries: 3.0.2
     sdkHooks: 1.0.0
@@ -142,7 +143,6 @@ generatedFiles:
   - scripts/publish.sh
   - src/investec_za_pb/__init__.py
   - src/investec_za_pb/_hooks/__init__.py
-  - src/investec_za_pb/_hooks/clientcredentials.py
   - src/investec_za_pb/_hooks/sdkhooks.py
   - src/investec_za_pb/_hooks/types.py
   - src/investec_za_pb/_version.py

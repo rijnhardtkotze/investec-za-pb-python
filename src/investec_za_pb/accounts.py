@@ -33,7 +33,7 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/accounts",
             base_url=base_url,
@@ -60,7 +60,7 @@ class Accounts(BaseSDK):
         http_res = self.do_request(
             hook_ctx=HookContext(
                 operation_id="accounts",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -113,7 +113,7 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/accounts",
             base_url=base_url,
@@ -140,7 +140,7 @@ class Accounts(BaseSDK):
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
                 operation_id="accounts",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -200,7 +200,7 @@ class Accounts(BaseSDK):
             account_id=account_id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/balance",
             base_url=base_url,
@@ -227,7 +227,7 @@ class Accounts(BaseSDK):
         http_res = self.do_request(
             hook_ctx=HookContext(
                 operation_id="balance",
-                oauth2_scopes=["accounts", "balances"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -287,7 +287,7 @@ class Accounts(BaseSDK):
             account_id=account_id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/balance",
             base_url=base_url,
@@ -314,7 +314,7 @@ class Accounts(BaseSDK):
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
                 operation_id="balance",
-                oauth2_scopes=["accounts", "balances"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -386,7 +386,7 @@ class Accounts(BaseSDK):
             include_pending=include_pending,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/transactions",
             base_url=base_url,
@@ -413,7 +413,7 @@ class Accounts(BaseSDK):
         http_res = self.do_request(
             hook_ctx=HookContext(
                 operation_id="accountsTransactions",
-                oauth2_scopes=["accounts", "transactions"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -487,7 +487,7 @@ class Accounts(BaseSDK):
             include_pending=include_pending,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/transactions",
             base_url=base_url,
@@ -514,7 +514,7 @@ class Accounts(BaseSDK):
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
                 operation_id="accountsTransactions",
-                oauth2_scopes=["accounts", "transactions"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -576,7 +576,7 @@ class Accounts(BaseSDK):
             account_id=account_id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/pending-transactions",
             base_url=base_url,
@@ -603,7 +603,7 @@ class Accounts(BaseSDK):
         http_res = self.do_request(
             hook_ctx=HookContext(
                 operation_id="accountsPendingTransactions",
-                oauth2_scopes=["accounts", "transactions"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -665,7 +665,7 @@ class Accounts(BaseSDK):
             account_id=account_id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/pending-transactions",
             base_url=base_url,
@@ -692,7 +692,7 @@ class Accounts(BaseSDK):
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
                 operation_id="accountsPendingTransactions",
-                oauth2_scopes=["accounts", "transactions"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -754,7 +754,7 @@ class Accounts(BaseSDK):
             profileid=profileid,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts",
             base_url=base_url,
@@ -781,7 +781,7 @@ class Accounts(BaseSDK):
         http_res = self.do_request(
             hook_ctx=HookContext(
                 operation_id="profileaccounts",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -843,7 +843,7 @@ class Accounts(BaseSDK):
             profileid=profileid,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts",
             base_url=base_url,
@@ -870,7 +870,7 @@ class Accounts(BaseSDK):
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
                 operation_id="profileaccounts",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -935,7 +935,7 @@ class Accounts(BaseSDK):
             accountid=accountid,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts/{accountid}/authorisationsetupdetails",
             base_url=base_url,
@@ -962,7 +962,7 @@ class Accounts(BaseSDK):
         http_res = self.do_request(
             hook_ctx=HookContext(
                 operation_id="authorisationsetupdetails",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -1027,7 +1027,7 @@ class Accounts(BaseSDK):
             accountid=accountid,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts/{accountid}/authorisationsetupdetails",
             base_url=base_url,
@@ -1054,7 +1054,7 @@ class Accounts(BaseSDK):
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
                 operation_id="authorisationsetupdetails",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -1119,7 +1119,7 @@ class Accounts(BaseSDK):
             accountid=accountid,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts/{accountid}/beneficiaries",
             base_url=base_url,
@@ -1146,7 +1146,7 @@ class Accounts(BaseSDK):
         http_res = self.do_request(
             hook_ctx=HookContext(
                 operation_id="profilebenefiaries",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -1211,7 +1211,7 @@ class Accounts(BaseSDK):
             accountid=accountid,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts/{accountid}/beneficiaries",
             base_url=base_url,
@@ -1238,7 +1238,7 @@ class Accounts(BaseSDK):
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
                 operation_id="profilebenefiaries",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
