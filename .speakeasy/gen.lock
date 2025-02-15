@@ -1,33 +1,34 @@
 lockVersion: 2.0.0
 id: 9da7e9a7-3501-4701-b932-661d9e12d555
 management:
-  docChecksum: 560fa6fa4db6b527afc1d7126fc9c902
+  docChecksum: c3923c2245d464f7f8ed9ddd6c60ba0c
   docVersion: 1.0.0
-  speakeasyVersion: 1.459.2
-  generationVersion: 2.483.1
-  releaseVersion: 0.1.2
-  configChecksum: c9b15e5a3fc6bf04ed154a2564fc0fa3
+  speakeasyVersion: 1.493.0
+  generationVersion: 2.512.4
+  releaseVersion: 0.2.0
+  configChecksum: a09e33a61d19a677292b05caa984839f
   repoURL: https://github.com/rijnhardtkotze/investec-za-pb-python.git
   installationURL: https://github.com/rijnhardtkotze/investec-za-pb-python.git
+  published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    core: 5.7.4
+    core: 5.11.0
     defaultEnabledRetries: 0.2.0
-    deprecations: 3.0.0
+    deprecations: 3.0.2
     devContainers: 3.0.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.2
     flatRequests: 1.0.1
-    flattening: 3.1.0
-    globalSecurity: 3.0.2
+    flattening: 3.1.1
+    globalSecurity: 3.0.3
     globalSecurityCallbacks: 1.0.0
+    globalSecurityFlattening: 1.0.0
     globalServerURLs: 3.1.0
     groups: 3.0.0
     methodArguments: 1.0.2
-    nameOverrides: 3.0.0
+    nameOverrides: 3.0.1
     nullables: 1.0.0
-    oauth2ClientCredentials: 1.1.0
     responseFormat: 1.0.1
     retries: 3.0.2
     sdkHooks: 1.0.0
@@ -38,7 +39,6 @@ generatedFiles:
   - .gitattributes
   - .python-version
   - .vscode/settings.json
-  - CONTRIBUTING.md
   - USAGE.md
   - docs/models/accountsaccounts.md
   - docs/models/accountspendingtransactionsdata.md
@@ -142,7 +142,6 @@ generatedFiles:
   - scripts/publish.sh
   - src/investec_za_pb/__init__.py
   - src/investec_za_pb/_hooks/__init__.py
-  - src/investec_za_pb/_hooks/clientcredentials.py
   - src/investec_za_pb/_hooks/sdkhooks.py
   - src/investec_za_pb/_hooks/types.py
   - src/investec_za_pb/_version.py
@@ -224,12 +223,7 @@ examples:
           accountId: "<id>"
       responses:
         "200":
-          application/json: {"links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/pending-transactions"}, "meta": {"totalPages": 1}}
-  profiles:
-    "":
-      responses:
-        "200":
-          application/json: {"data": [{"profileId": "10163189587444", "profileName": "Profile A", "defaultProfile": true}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles"}}
+          application/json: {"data": {}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/pending-transactions"}, "meta": {"totalPages": 1}}
   profileaccounts:
     "":
       parameters:
@@ -293,6 +287,11 @@ examples:
       responses:
         "200":
           application/json: {"data": {"id": "10164601247279", "isDefault": "true", "name": "Not Categorised"}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/beneficiarycategories"}}
+  profiles:
+    "":
+      responses:
+        "200":
+          application/json: {"data": [{"profileId": "10163189587444", "profileName": "Profile A", "defaultProfile": true}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles"}}
   documents:
     "":
       parameters:
@@ -311,4 +310,5 @@ examples:
           accountId: "<id>"
           documentType: "<value>"
           documentDate: "<value>"
+examplesVersion: 1.0.0
 generatedTests: {}

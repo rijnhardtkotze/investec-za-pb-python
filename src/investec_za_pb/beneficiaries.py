@@ -51,7 +51,7 @@ class Beneficiaries(BaseSDK):
             ),
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/za/pb/v1/accounts/{accountId}/paymultiple",
             base_url=base_url,
@@ -84,8 +84,9 @@ class Beneficiaries(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="payBeneficiary",
-                oauth2_scopes=["accounts", "beneficiarypayments"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -99,9 +100,12 @@ class Beneficiaries(BaseSDK):
             return utils.unmarshal_json(
                 http_res.text, models.PayBeneficiaryResponseBody
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.APIError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.APIError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -158,7 +162,7 @@ class Beneficiaries(BaseSDK):
             ),
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/za/pb/v1/accounts/{accountId}/paymultiple",
             base_url=base_url,
@@ -191,8 +195,9 @@ class Beneficiaries(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="payBeneficiary",
-                oauth2_scopes=["accounts", "beneficiarypayments"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -206,9 +211,12 @@ class Beneficiaries(BaseSDK):
             return utils.unmarshal_json(
                 http_res.text, models.PayBeneficiaryResponseBody
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.APIError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.APIError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -247,7 +255,7 @@ class Beneficiaries(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/accounts/beneficiaries",
             base_url=base_url,
@@ -273,8 +281,9 @@ class Beneficiaries(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="beneficiaries",
-                oauth2_scopes=["accounts", "beneficiarypayments"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -286,9 +295,12 @@ class Beneficiaries(BaseSDK):
 
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.BeneficiariesResponseBody)
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.APIError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.APIError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -327,7 +339,7 @@ class Beneficiaries(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/accounts/beneficiaries",
             base_url=base_url,
@@ -353,8 +365,9 @@ class Beneficiaries(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="beneficiaries",
-                oauth2_scopes=["accounts", "beneficiarypayments"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -366,9 +379,12 @@ class Beneficiaries(BaseSDK):
 
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.BeneficiariesResponseBody)
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.APIError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.APIError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -407,7 +423,7 @@ class Beneficiaries(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/accounts/beneficiarycategories",
             base_url=base_url,
@@ -433,8 +449,9 @@ class Beneficiaries(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="beneficiaryCategories",
-                oauth2_scopes=["accounts", "beneficiarypayments"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -448,9 +465,12 @@ class Beneficiaries(BaseSDK):
             return utils.unmarshal_json(
                 http_res.text, models.BeneficiaryCategoriesResponseBody
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.APIError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.APIError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -489,7 +509,7 @@ class Beneficiaries(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/accounts/beneficiarycategories",
             base_url=base_url,
@@ -515,8 +535,9 @@ class Beneficiaries(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="beneficiaryCategories",
-                oauth2_scopes=["accounts", "beneficiarypayments"],
+                oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -530,9 +551,12 @@ class Beneficiaries(BaseSDK):
             return utils.unmarshal_json(
                 http_res.text, models.BeneficiaryCategoriesResponseBody
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.APIError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.APIError(
                 "API error occurred", http_res.status_code, http_res_text, http_res

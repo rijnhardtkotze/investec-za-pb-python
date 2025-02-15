@@ -1,21 +1,21 @@
-speakeasyVersion: 1.459.2
+speakeasyVersion: 1.493.0
 sources:
     SA PB Account Information:
         sourceNamespace: sa-pb-account-information
-        sourceRevisionDigest: sha256:bc69aa2da1afb56d150d780b2d800da48eb1accd2bc0fd964f8ea1ef8e9ad1de
-        sourceBlobDigest: sha256:0963bc6bc1f88c4066af6cf243e21f9246ca206018c017a10c863d8091d91477
+        sourceRevisionDigest: sha256:1b0ff030300de4bc6003dc2e76b5f2a46f68768af0abe6970eea52c3fd333307
+        sourceBlobDigest: sha256:e0ee1c5a93de14bd7fab7f7f5594e9630f77a3e47b275c7fa841fdae93332865
         tags:
             - latest
-            - speakeasy-sdk-regen-1734769548
+            - speakeasy-sdk-regen-1736554411
             - 1.0.0
 targets:
     investec:
         source: SA PB Account Information
         sourceNamespace: sa-pb-account-information
-        sourceRevisionDigest: sha256:bc69aa2da1afb56d150d780b2d800da48eb1accd2bc0fd964f8ea1ef8e9ad1de
-        sourceBlobDigest: sha256:0963bc6bc1f88c4066af6cf243e21f9246ca206018c017a10c863d8091d91477
+        sourceRevisionDigest: sha256:1b0ff030300de4bc6003dc2e76b5f2a46f68768af0abe6970eea52c3fd333307
+        sourceBlobDigest: sha256:e0ee1c5a93de14bd7fab7f7f5594e9630f77a3e47b275c7fa841fdae93332865
         codeSamplesNamespace: sa-pb-account-information-python-code-samples
-        codeSamplesRevisionDigest: sha256:f469ea000815266811ad69be31df094bf56885ca777aae57115bf751aa5b07c5
+        codeSamplesRevisionDigest: sha256:089f36b2f4b37f43e1b8eeef7628b70e100f3a67a4efc4dbb1595f93dc27e068
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -31,6 +31,9 @@ workflow:
         investec:
             target: python
             source: SA PB Account Information
+            publish:
+                pypi:
+                    token: $pypi_token
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/rijnhardtkotze/investec-za-pb/sa-pb-account-information-python-code-samples
