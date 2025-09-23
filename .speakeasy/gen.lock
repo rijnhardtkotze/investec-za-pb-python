@@ -1,44 +1,43 @@
 lockVersion: 2.0.0
 id: 9da7e9a7-3501-4701-b932-661d9e12d555
 management:
-  docChecksum: 560fa6fa4db6b527afc1d7126fc9c902
+  docChecksum: c3923c2245d464f7f8ed9ddd6c60ba0c
   docVersion: 1.0.0
-  speakeasyVersion: 1.459.2
-  generationVersion: 2.483.1
-  releaseVersion: 0.1.2
-  configChecksum: c9b15e5a3fc6bf04ed154a2564fc0fa3
+  speakeasyVersion: 1.622.1
+  generationVersion: 2.709.0
+  releaseVersion: 0.2.0
+  configChecksum: 4bee446b862e6abaa413dfd682753880
   repoURL: https://github.com/rijnhardtkotze/investec-za-pb-python.git
   installationURL: https://github.com/rijnhardtkotze/investec-za-pb-python.git
+  published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    core: 5.7.4
+    core: 5.20.4
     defaultEnabledRetries: 0.2.0
-    deprecations: 3.0.0
+    deprecations: 3.0.2
     devContainers: 3.0.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.2
     flatRequests: 1.0.1
-    flattening: 3.1.0
-    globalSecurity: 3.0.2
+    flattening: 3.1.1
+    globalSecurity: 3.0.4
     globalSecurityCallbacks: 1.0.0
-    globalServerURLs: 3.1.0
+    globalSecurityFlattening: 1.0.0
+    globalServerURLs: 3.1.1
     groups: 3.0.0
     methodArguments: 1.0.2
-    nameOverrides: 3.0.0
-    nullables: 1.0.0
-    oauth2ClientCredentials: 1.1.0
+    nameOverrides: 3.0.1
+    nullables: 1.0.1
     responseFormat: 1.0.1
     retries: 3.0.2
-    sdkHooks: 1.0.0
+    sdkHooks: 1.1.0
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
   - .devcontainer/setup.sh
   - .gitattributes
-  - .python-version
   - .vscode/settings.json
-  - CONTRIBUTING.md
   - USAGE.md
   - docs/models/accountsaccounts.md
   - docs/models/accountspendingtransactionsdata.md
@@ -138,11 +137,10 @@ generatedFiles:
   - py.typed
   - pylintrc
   - pyproject.toml
-  - scripts/prepare-readme.py
+  - scripts/prepare_readme.py
   - scripts/publish.sh
   - src/investec_za_pb/__init__.py
   - src/investec_za_pb/_hooks/__init__.py
-  - src/investec_za_pb/_hooks/clientcredentials.py
   - src/investec_za_pb/_hooks/sdkhooks.py
   - src/investec_za_pb/_hooks/types.py
   - src/investec_za_pb/_version.py
@@ -163,10 +161,13 @@ generatedFiles:
   - src/investec_za_pb/models/beneficiarycategoriesop.py
   - src/investec_za_pb/models/documentop.py
   - src/investec_za_pb/models/documentsop.py
+  - src/investec_za_pb/models/investecerror.py
+  - src/investec_za_pb/models/no_response_error.py
   - src/investec_za_pb/models/paybeneficiaryop.py
   - src/investec_za_pb/models/profileaccountsop.py
   - src/investec_za_pb/models/profilebenefiariesop.py
   - src/investec_za_pb/models/profilesop.py
+  - src/investec_za_pb/models/responsevalidationerror.py
   - src/investec_za_pb/models/security.py
   - src/investec_za_pb/models/transferop.py
   - src/investec_za_pb/models/transferv2op.py
@@ -178,6 +179,7 @@ generatedFiles:
   - src/investec_za_pb/types/basemodel.py
   - src/investec_za_pb/utils/__init__.py
   - src/investec_za_pb/utils/annotations.py
+  - src/investec_za_pb/utils/datetimes.py
   - src/investec_za_pb/utils/enums.py
   - src/investec_za_pb/utils/eventstreaming.py
   - src/investec_za_pb/utils/forms.py
@@ -189,24 +191,25 @@ generatedFiles:
   - src/investec_za_pb/utils/retries.py
   - src/investec_za_pb/utils/security.py
   - src/investec_za_pb/utils/serializers.py
+  - src/investec_za_pb/utils/unmarshal_json_response.py
   - src/investec_za_pb/utils/url.py
   - src/investec_za_pb/utils/values.py
 examples:
   accounts:
-    "":
+    speakeasy-default-accounts:
       responses:
         "200":
-          application/json: {"data": {"accounts": [{"accountId": "3353431574710163189587446", "accountNumber": "10101010101", "accountName": "Mr John Doe", "referenceName": "My Investec Private Bank Account", "productName": "Private Bank Account", "kycCompliant": true, "profileId": "10163189587443", "profileName": "My Profile"}]}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts"}, "meta": {"totalPages": 1}}
+          application/json: {"data": {}, "links": {"self": "<value>"}, "meta": {}}
   balance:
-    "":
+    speakeasy-default-balance:
       parameters:
         path:
           accountId: "<id>"
       responses:
         "200":
-          application/json: {"data": {"accountId": "172878438321553632224", "currentBalance": 28857.76, "availableBalance": 98857.76, "budgetBalance": 0, "straightBalance": 0, "cashBalance": -10818415.98, "currency": "ZAR"}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/balance"}, "meta": {"totalPages": 1}}
+          application/json: {"data": {"accountId": "<id>", "currentBalance": 8220.14, "availableBalance": 6651.63, "budgetBalance": 6329.76, "straightBalance": 1075.08, "cashBalance": 6333.95, "currency": "New Leu"}, "links": {"self": "<value>"}, "meta": {}}
   accountsTransactions:
-    "":
+    speakeasy-default-accounts-transactions:
       parameters:
         path:
           accountId: "<id>"
@@ -216,85 +219,85 @@ examples:
           transactionType: "FeesAndInterest"
       responses:
         "200":
-          application/json: {"data": {"transactions": [{"accountId": "172878438321553632224", "type": "DEBIT", "transactionType": "FeesAndInterest", "status": "POSTED", "description": "MONTHLY SERVICE CHARGE", "cardNumber": "", "postedOrder": 13379, "postingDate": "2020-06-11", "valueDate": "2020-06-10", "actionDate": "2020-11-10", "transactionDate": "2020-06-10", "amount": 535, "runningBalance": 28857.76}, {"accountId": "172878438321553632224", "type": "CREDIT", "transactionType": "FeesAndInterest", "status": "POSTED", "description": "CREDIT INTEREST", "cardNumber": "", "postedOrder": 13378, "postingDate": "2020-06-11", "valueDate": "2020-06-10", "actionDate": "2020-11-10", "transactionDate": "2020-06-10", "amount": 31.09, "runningBalance": 29392.76}]}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/transactions?fromDate={fromDate}&toDate={toDate}&transactionType={transactionType}"}, "meta": {"totalPages": 1}}
+          application/json: {"data": {}, "links": {"self": "<value>"}, "meta": {}}
   accountsPendingTransactions:
-    "":
+    speakeasy-default-accounts-pending-transactions:
       parameters:
         path:
           accountId: "<id>"
       responses:
         "200":
-          application/json: {"links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/pending-transactions"}, "meta": {"totalPages": 1}}
-  profiles:
-    "":
-      responses:
-        "200":
-          application/json: {"data": [{"profileId": "10163189587444", "profileName": "Profile A", "defaultProfile": true}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles"}}
+          application/json: {"data": {}, "links": {"self": "<value>"}, "meta": {}}
   profileaccounts:
-    "":
+    speakeasy-default-profileaccounts:
       parameters:
         path:
           profileid: "10190798011073"
       responses:
         "200":
-          application/json: {"data": [{"accountId": "172878438321553632224", "accountNumber": "10010206147", "accountName": "Mr John Doe", "referenceName": "My Investec Private Bank Account", "productName": "Private Bank Account", "kycCompliant": true, "profileId": "10163189587443", "profileName": "My Profile"}], "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/{profileid}/accounts"}, "meta": {"totalPages": 1}}
+          application/json: {"data": [{"accountId": "<id>", "accountNumber": "<value>", "accountName": "<value>", "referenceName": "<value>", "productName": "<value>", "kycCompliant": false, "profileId": "<id>", "profileName": "<value>"}], "links": {"self": "<value>"}, "meta": {}}
   authorisationsetupdetails:
-    "":
+    speakeasy-default-authorisationsetupdetails:
       parameters:
         path:
           profileid: "4643233712010169349094403"
           accountid: "10190798011073"
       responses:
         "200":
-          application/json: {"data": {"numberOfAuthorisationRequired": "2", "period": [{"id": "1"}, {"id": "2"}, {"id": "3"}, {"id": "4"}, {"id": "5"}, {"id": "6"}, {"id": "7"}, {"id": "8"}, {"id": "9"}, {"id": "10"}, {"id": "0"}], "authorisersListA": [{"name": "Mr Auth 1"}, {"name": "Mr Auth 2"}, {"name": "All"}], "authorisersListB": [{"name": "Mr Auth 3"}, {"name": "Mr Auth 4"}, {"name": "All"}]}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/{profileid}/accounts/{accountId}/authorisationsetupdetails"}}
+          application/json: {"data": {}, "meta": {}, "links": {"self": "<value>"}}
   profilebenefiaries:
-    "":
+    speakeasy-default-profilebenefiaries:
       parameters:
         path:
           profileid: "4643233712010169349094403"
           accountid: "10190798011073"
       responses:
         "200":
-          application/json: {"data": [{"beneficiaryId": "MTAxOTAxOTyNTQMTU=", "accountNumber": "6241708900", "code": "250655", "bank": "FIRST NATIONAL BANK", "beneficiaryName": "Ad A AIA", "lastPaymentAmount": "10.00", "lastPaymentDate": "10/03/2019", "cellNo": "0987654321", "emailAddress": "QUwCV@someweb.co.za", "name": "DccIcIXI", "referenceAccountNumber": "NIC036", "referenceName": "amingFra ing Framin", "categoryId": "10164601247279", "profileId": "10163189587443", "fasterPaymentAllowed": true}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/{profileid}/accounts/{accountid}/beneficiaries"}}
+          application/json: {"data": [], "meta": {}, "links": {"self": "<value>"}}
   transfer:
-    "":
+    speakeasy-default-transfer:
       requestBody:
-        application/json: {"accountId": "XXXXXX", "transferList": [{"beneficiaryAccountId": "XXXXXXXXXX", "amount": "10.12", "myReference": "Trans from PBA to PS", "theirReference": "Trans from PBA to PS"}]}
+        application/json: {"accountId": "XXXXXX"}
       responses:
         "200":
-          application/json: {"data": {"transferResponse": {"TransferResponses": [{"PaymentReferenceNumber": "UBP0012345678", "PaymentDate": "06/04/2022", "Status": "- No authorisation necessary <BR>- Payment/Transfer effective date 06/04/2022", "BeneficiaryName": "API transfer", "BeneficiaryAccountId": "XXXXXXXXXX", "AuthorisationRequired": false}], "ErrorMessage": null}}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/transfermultiple"}}
+          application/json: {"data": {}, "meta": {}, "links": {"self": "<value>"}}
   transferv2:
-    "":
+    speakeasy-default-transferv2:
       parameters:
         path:
           accountId: "<id>"
       requestBody:
-        application/json: {"transferList": [{"beneficiaryAccountId": "XXXXXXXXXX", "amount": "10.12", "myReference": "Trans from PBA to PS", "theirReference": "Trans from PBA to PS"}], "profileId": "10163189587443"}
+        application/json: {}
       responses:
         "200":
-          application/json: {"data": {"TransferResponses": [{"PaymentReferenceNumber": "UBP0012345678", "PaymentDate": "06/04/2022", "Status": "- No authorisation necessary <BR>- Payment/Transfer effective date 06/04/2022", "BeneficiaryName": "API transfer", "BeneficiaryAccountId": "XXXXXXXXXX", "AuthorisationRequired": false}], "ErrorMessage": null}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/172878438321553632224/transfermultiple"}}
+          application/json: {"data": {}, "meta": {}, "links": {"self": "<value>"}}
   payBeneficiary:
-    "":
+    speakeasy-default-pay-beneficiary:
       parameters:
         path:
           accountId: "3353431574710163189587446"
       requestBody:
-        application/json: {"paymentList": [{"beneficiaryId": "MTAxMDEwMTAxMDEwMTA=", "amount": "101", "myReference": "Beneficiary payment to", "theirReference": "Payment from Sandbox"}]}
+        application/json: {}
       responses:
         "200":
-          application/json: {"data": {"TransferResponses": [{"PaymentReferenceNumber": "UBP0012345678", "PaymentDate": "06/04/2022", "Status": "- No authorisation necessary <BR>- Payment/Transfer effective date 06/04/2022", "BeneficiaryName": "API transfer", "BeneficiaryAccountId": "XXXXXXXXXX", "AuthorisationRequired": false}], "ErrorMessage": null}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/paymultiple"}}
+          application/json: {"data": {}, "meta": {}, "links": {"self": "<value>"}}
   beneficiaries:
-    "":
+    speakeasy-default-beneficiaries:
       responses:
         "200":
-          application/json: {"data": [{"beneficiaryId": "MTAxOTAxOTyNTQMTU=", "accountNumber": "6241708900", "code": "250655", "bank": "FIRST NATIONAL BANK", "beneficiaryName": "Ad A AIA", "lastPaymentAmount": "10.00", "lastPaymentDate": "10/03/2019", "cellNo": "0987654321", "emailAddress": "QUwCV@someweb.co.za", "name": "DccIcIXI", "referenceAccountNumber": "NIC036", "referenceName": "amingFra ing Framin", "categoryId": "10164601247279", "profileId": "10163189587443", "fasterPaymentAllowed": true}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/10163189587443/accounts/3353431574710163189587446/beneficiaries"}}
+          application/json: {"data": [], "meta": {}, "links": {"self": "<value>"}}
   beneficiaryCategories:
-    "":
+    speakeasy-default-beneficiary-categories:
       responses:
         "200":
-          application/json: {"data": {"id": "10164601247279", "isDefault": "true", "name": "Not Categorised"}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/beneficiarycategories"}}
+          application/json: {"data": {}, "meta": {}, "links": {"self": "<value>"}}
+  profiles:
+    speakeasy-default-profiles:
+      responses:
+        "200":
+          application/json: {"data": [], "meta": {}, "links": {"self": "<value>"}}
   documents:
-    "":
+    speakeasy-default-documents:
       parameters:
         path:
           accountId: "<id>"
@@ -303,7 +306,7 @@ examples:
           toDate: "2023-06-01"
       responses:
         "200":
-          application/json: {"data": [{"documentType": "Statement", "documentDate": "2023-03-16"}, {"documentType": "Statement", "documentDate": "2023-02-16"}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/documents?fromDate={fromDate}&toDate={toDate}"}}
+          application/json: {"data": [], "meta": {}, "links": {"self": "<value>"}}
   document:
     speakeasy-default-document:
       parameters:
@@ -311,4 +314,5 @@ examples:
           accountId: "<id>"
           documentType: "<value>"
           documentDate: "<value>"
+examplesVersion: 1.0.2
 generatedTests: {}

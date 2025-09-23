@@ -1,15 +1,12 @@
 <!-- Start SDK Example Usage [usage] -->
 ```python
 # Synchronous Example
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_all()
@@ -20,20 +17,17 @@ with Investec(
 
 </br>
 
-The same SDK client can also be used to make asychronous requests by importing asyncio.
+The same SDK client can also be used to make asynchronous requests by importing asyncio.
 ```python
 # Asynchronous Example
 import asyncio
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
 async def main():
+
     async with Investec(
-        security=investec_za_pb.Security(
-            client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-            client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-        ),
+        oauth2=os.getenv("INVESTEC_OAUTH2", ""),
     ) as investec:
 
         res = await investec.accounts.get_all_async()

@@ -13,16 +13,14 @@ List all the profiles consented to.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="profiles" method="get" path="/za/pb/v1/profiles" -->
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.profiles.get()

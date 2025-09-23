@@ -64,14 +64,8 @@ def get_security_from_env(security: Any, security_class: Any) -> Optional[BaseMo
 
     security_dict: Any = {}
 
-    if os.getenv("INVESTEC_CLIENT_ID"):
-        security_dict["client_id"] = os.getenv("INVESTEC_CLIENT_ID")
-
-    if os.getenv("INVESTEC_CLIENT_SECRET"):
-        security_dict["client_secret"] = os.getenv("INVESTEC_CLIENT_SECRET")
-
-    if os.getenv("INVESTEC_TOKEN_URL"):
-        security_dict["token_url"] = os.getenv("INVESTEC_TOKEN_URL")
+    if os.getenv("INVESTEC_OAUTH2"):
+        security_dict["oauth2"] = os.getenv("INVESTEC_OAUTH2")
 
     return security_class(**security_dict) if security_dict else None
 
