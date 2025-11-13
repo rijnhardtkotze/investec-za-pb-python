@@ -5,6 +5,7 @@ from investec_za_pb import models, utils
 from investec_za_pb._hooks import HookContext
 from investec_za_pb.types import OptionalNullable, UNSET
 from investec_za_pb.utils import get_security_from_env
+from investec_za_pb.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Mapping, Optional
 
 
@@ -33,7 +34,9 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        else:
+            base_url = self._get_url(base_url, url_variables)
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/accounts",
             base_url=base_url,
@@ -59,8 +62,10 @@ class Accounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="accounts",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -71,23 +76,15 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.AccountsResponseBody)
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+            return unmarshal_json_response(models.AccountsResponseBody, http_res)
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     async def get_all_async(
         self,
@@ -113,7 +110,9 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        else:
+            base_url = self._get_url(base_url, url_variables)
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/accounts",
             base_url=base_url,
@@ -139,8 +138,10 @@ class Accounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="accounts",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -151,23 +152,15 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.AccountsResponseBody)
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+            return unmarshal_json_response(models.AccountsResponseBody, http_res)
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     def get_balance(
         self,
@@ -195,12 +188,14 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BalanceRequest(
             account_id=account_id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/balance",
             base_url=base_url,
@@ -226,8 +221,10 @@ class Accounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="balance",
-                oauth2_scopes=["accounts", "balances"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -238,23 +235,15 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.BalanceResponseBody)
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+            return unmarshal_json_response(models.BalanceResponseBody, http_res)
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     async def get_balance_async(
         self,
@@ -282,12 +271,14 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BalanceRequest(
             account_id=account_id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/balance",
             base_url=base_url,
@@ -313,8 +304,10 @@ class Accounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="balance",
-                oauth2_scopes=["accounts", "balances"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -325,23 +318,15 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.BalanceResponseBody)
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+            return unmarshal_json_response(models.BalanceResponseBody, http_res)
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     def get_transactions(
         self,
@@ -377,6 +362,8 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.AccountsTransactionsRequest(
             account_id=account_id,
@@ -386,7 +373,7 @@ class Accounts(BaseSDK):
             include_pending=include_pending,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/transactions",
             base_url=base_url,
@@ -412,8 +399,10 @@ class Accounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="accountsTransactions",
-                oauth2_scopes=["accounts", "transactions"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -424,25 +413,17 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.AccountsTransactionsResponseBody
+            return unmarshal_json_response(
+                models.AccountsTransactionsResponseBody, http_res
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     async def get_transactions_async(
         self,
@@ -478,6 +459,8 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.AccountsTransactionsRequest(
             account_id=account_id,
@@ -487,7 +470,7 @@ class Accounts(BaseSDK):
             include_pending=include_pending,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/transactions",
             base_url=base_url,
@@ -513,8 +496,10 @@ class Accounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="accountsTransactions",
-                oauth2_scopes=["accounts", "transactions"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -525,25 +510,17 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.AccountsTransactionsResponseBody
+            return unmarshal_json_response(
+                models.AccountsTransactionsResponseBody, http_res
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     def get_pending_transactions(
         self,
@@ -571,12 +548,14 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.AccountsPendingTransactionsRequest(
             account_id=account_id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/pending-transactions",
             base_url=base_url,
@@ -602,8 +581,10 @@ class Accounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="accountsPendingTransactions",
-                oauth2_scopes=["accounts", "transactions"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -614,25 +595,17 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.AccountsPendingTransactionsResponseBody
+            return unmarshal_json_response(
+                models.AccountsPendingTransactionsResponseBody, http_res
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     async def get_pending_transactions_async(
         self,
@@ -660,12 +633,14 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.AccountsPendingTransactionsRequest(
             account_id=account_id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/accounts/{accountId}/pending-transactions",
             base_url=base_url,
@@ -691,8 +666,10 @@ class Accounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="accountsPendingTransactions",
-                oauth2_scopes=["accounts", "transactions"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -703,25 +680,17 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.AccountsPendingTransactionsResponseBody
+            return unmarshal_json_response(
+                models.AccountsPendingTransactionsResponseBody, http_res
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     def get_profile_accounts(
         self,
@@ -749,12 +718,14 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.ProfileaccountsRequest(
             profileid=profileid,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts",
             base_url=base_url,
@@ -780,8 +751,10 @@ class Accounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="profileaccounts",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -792,25 +765,15 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.ProfileaccountsResponseBody
-            )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+            return unmarshal_json_response(models.ProfileaccountsResponseBody, http_res)
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     async def get_profile_accounts_async(
         self,
@@ -838,12 +801,14 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.ProfileaccountsRequest(
             profileid=profileid,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts",
             base_url=base_url,
@@ -869,8 +834,10 @@ class Accounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="profileaccounts",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -881,25 +848,15 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.ProfileaccountsResponseBody
-            )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+            return unmarshal_json_response(models.ProfileaccountsResponseBody, http_res)
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     def get_authorization_setup(
         self,
@@ -929,13 +886,15 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.AuthorisationsetupdetailsRequest(
             profileid=profileid,
             accountid=accountid,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts/{accountid}/authorisationsetupdetails",
             base_url=base_url,
@@ -961,8 +920,10 @@ class Accounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="authorisationsetupdetails",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -973,25 +934,17 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.AuthorisationsetupdetailsResponseBody
+            return unmarshal_json_response(
+                models.AuthorisationsetupdetailsResponseBody, http_res
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     async def get_authorization_setup_async(
         self,
@@ -1021,13 +974,15 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.AuthorisationsetupdetailsRequest(
             profileid=profileid,
             accountid=accountid,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts/{accountid}/authorisationsetupdetails",
             base_url=base_url,
@@ -1053,8 +1008,10 @@ class Accounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="authorisationsetupdetails",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -1065,25 +1022,17 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.AuthorisationsetupdetailsResponseBody
+            return unmarshal_json_response(
+                models.AuthorisationsetupdetailsResponseBody, http_res
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     def get_profile_beneficiaries(
         self,
@@ -1113,13 +1062,15 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.ProfilebenefiariesRequest(
             profileid=profileid,
             accountid=accountid,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts/{accountid}/beneficiaries",
             base_url=base_url,
@@ -1145,8 +1096,10 @@ class Accounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="profilebenefiaries",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -1157,25 +1110,17 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.ProfilebenefiariesResponseBody
+            return unmarshal_json_response(
+                models.ProfilebenefiariesResponseBody, http_res
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
 
     async def get_profile_beneficiaries_async(
         self,
@@ -1205,13 +1150,15 @@ class Accounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.ProfilebenefiariesRequest(
             profileid=profileid,
             accountid=accountid,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/za/pb/v1/profiles/{profileid}/accounts/{accountid}/beneficiaries",
             base_url=base_url,
@@ -1237,8 +1184,10 @@ class Accounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="profilebenefiaries",
-                oauth2_scopes=["accounts", "accounts"],
+                oauth2_scopes=None,
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
@@ -1249,22 +1198,14 @@ class Accounts(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.ProfilebenefiariesResponseBody
+            return unmarshal_json_response(
+                models.ProfilebenefiariesResponseBody, http_res
             )
-        if utils.match_response(
-            http_res, ["400", "401", "403", "429", "4XX", "500", "5XX"], "*"
-        ):
+        if utils.match_response(http_res, ["400", "401", "403", "429", "4XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.APIError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["500", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.APIError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.APIError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.APIError("Unexpected response received", http_res)
