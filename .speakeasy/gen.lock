@@ -1,36 +1,816 @@
 lockVersion: 2.0.0
 id: 9da7e9a7-3501-4701-b932-661d9e12d555
 management:
-  docChecksum: 560fa6fa4db6b527afc1d7126fc9c902
+  docChecksum: d262746f8148aa6939d1462ca352502f
   docVersion: 1.0.0
-  speakeasyVersion: 1.459.2
-  generationVersion: 2.483.1
-  releaseVersion: 0.1.2
-  configChecksum: c9b15e5a3fc6bf04ed154a2564fc0fa3
+  speakeasyVersion: 1.788.1
+  generationVersion: 2.915.1
+  releaseVersion: 0.2.0
+  configChecksum: 21b127ee39c9c629a164da05d74c7ef6
   repoURL: https://github.com/rijnhardtkotze/investec-za-pb-python.git
   installationURL: https://github.com/rijnhardtkotze/investec-za-pb-python.git
+  published: true
+persistentEdits:
+  generation_id: f309ed70-f0ef-459b-80c9-852449bcf6e0
+  pristine_commit_hash: 62dbe3bba186e2240ff0e3692d8afa85f0e2906f
+  pristine_tree_hash: 322e200a009ca32b333934d591bad767f383fa97
 features:
   python:
-    additionalDependencies: 1.0.0
-    core: 5.7.4
+    additionalDependencies: 1.1.0
+    core: 6.0.34
     defaultEnabledRetries: 0.2.0
-    deprecations: 3.0.0
+    deprecations: 3.0.2
     devContainers: 3.0.0
-    enumUnions: 0.1.0
-    envVarSecurityUsage: 0.3.2
+    enumUnions: 0.1.1
+    envVarSecurityUsage: 0.3.3
     flatRequests: 1.0.1
-    flattening: 3.1.0
-    globalSecurity: 3.0.2
+    flattening: 3.1.1
+    globalSecurity: 3.0.7
     globalSecurityCallbacks: 1.0.0
-    globalServerURLs: 3.1.0
-    groups: 3.0.0
-    methodArguments: 1.0.2
-    nameOverrides: 3.0.0
-    nullables: 1.0.0
-    oauth2ClientCredentials: 1.1.0
-    responseFormat: 1.0.1
-    retries: 3.0.2
-    sdkHooks: 1.0.0
+    globalSecurityFlattening: 1.0.0
+    globalServerURLs: 3.2.1
+    groups: 3.0.1
+    methodArguments: 1.1.1
+    nameOverrides: 3.0.3
+    nullables: 1.0.2
+    responseFormat: 1.1.0
+    retries: 3.0.7
+    sdkHooks: 1.3.0
+trackedFiles:
+  .devcontainer/README.md:
+    id: b170c0f184ac
+    last_write_checksum: sha1:fb06e6e81650508e9e6ef0fced1c6c10f72c919f
+    pristine_git_object: 60c972fc15042954f38eb27d712465aecd9d16aa
+  .devcontainer/devcontainer.json:
+    id: b34062a34eb1
+    last_write_checksum: sha1:fbbce5654b8990b172a9ffe841d7635cd51c495b
+    pristine_git_object: 7e67af9f5b5aeed56bab8dd84f75d3729df3ada1
+  .devcontainer/setup.sh:
+    id: 5f1dfbfeb8eb
+    last_write_checksum: sha1:adafde858aa77fb483526ef67d28f246567e47e8
+    pristine_git_object: e90cbcf112cc1964229da7d061965c142bd6b100
+  .gitattributes:
+    id: 24139dae6567
+    last_write_checksum: sha1:53134de3ada576f37c22276901e1b5b6d85cd2da
+    pristine_git_object: 4d75d59008e4d8609876d263419a9dc56c8d6f3a
+  .vscode/settings.json:
+    id: 89aa447020cd
+    last_write_checksum: sha1:f84632c81029fcdda8c3b0c768d02b836fc80526
+    pristine_git_object: 8d79f0abb72526f1fb34a4c03e5bba612c6ba2ae
+  USAGE.md:
+    id: 3aed33ce6e6f
+    last_write_checksum: sha1:a755bc5819f3b9560edd392e22844999063ac3c3
+    pristine_git_object: 24384a595f3de7a9b452a1db1c1b4be993a9aa49
+  docs/models/accountsaccounts.md:
+    id: 56a4323692ea
+    last_write_checksum: sha1:3afe4a4b35507b1a40c0e6461a4e11232538f55e
+    pristine_git_object: 69e947e03731a7d71613a9e24c33427b6443bd50
+  docs/models/accountspendingtransactionsdata.md:
+    id: 82458619b2e1
+    last_write_checksum: sha1:18c5c346893b1a0878ee6ee14ae6f1eef742fb2f
+    pristine_git_object: a20fa3875ec5a02d049cc33b59cf9fdda54ac6e5
+  docs/models/accountspendingtransactionslinks.md:
+    id: 3ee2730baa71
+    last_write_checksum: sha1:752bf601013664325bc4a8e894ea988c8a535e09
+    pristine_git_object: ed66d2cf82ac35831532ed0d115b976bda4b92ab
+  docs/models/accountspendingtransactionsmeta.md:
+    id: 52e52491f2ac
+    last_write_checksum: sha1:36c63a90f2bdb2bd343127674a4eff6f2401ba33
+    pristine_git_object: 769ecb6d99b233fa7d213143904ae3ff12575a17
+  docs/models/accountspendingtransactionsrequest.md:
+    id: 9cb3d5bc9c95
+    last_write_checksum: sha1:474da9f83d659f3e75fb17ee4cb0cf77437c98ef
+    pristine_git_object: 3705eccbcaf30f18ef04eb7ef0ebeeb9942c42c7
+  docs/models/accountspendingtransactionsresponsebody.md:
+    id: 57e23d227af1
+    last_write_checksum: sha1:c51498ba9f6671bfa39e52d27d0273a2d47bdb88
+    pristine_git_object: a6651a71fbb50c7b980d8fd45e1b9cf523f817ec
+  docs/models/accountspendingtransactionsstatus.md:
+    id: 2a5c8b40060a
+    last_write_checksum: sha1:61e435b5d8e43277fd8ef3457e490273832adba1
+    pristine_git_object: 9add4e0308d2240863db87611f26dd53bcee3ed2
+  docs/models/accountspendingtransactionstype.md:
+    id: 5baf8d0b4402
+    last_write_checksum: sha1:91732ff7148f4b49176476154e289516b31ff571
+    pristine_git_object: bb87f43a323baccd982fe06189f7ace9023f2936
+  docs/models/accountsresponsebody.md:
+    id: 3fa99430a2cf
+    last_write_checksum: sha1:c8d70edd8250561236ee7354d3d4486d5184d931
+    pristine_git_object: 497de0ce90607d96e40a3d22ff937e307b19a4e5
+  docs/models/accountstransactionsdata.md:
+    id: 396a19959246
+    last_write_checksum: sha1:828c2af95cf3ccde69910da49e91b1a00aa57cbb
+    pristine_git_object: 281b3ab8d93f7293e5b171d0c7ce5e6cc68bd68d
+  docs/models/accountstransactionslinks.md:
+    id: 18fe5c81872a
+    last_write_checksum: sha1:fa43a21025590b3d43737db116d107bb37f128e3
+    pristine_git_object: e0f81780a5a5516eba5d59b89939824d2e86c485
+  docs/models/accountstransactionsmeta.md:
+    id: 426e3ba2920a
+    last_write_checksum: sha1:3c32edc2ac761624a115c01b99654355246c6c3e
+    pristine_git_object: 13313bded7ceb515d47de753150cf6624a31e67e
+  docs/models/accountstransactionsrequest.md:
+    id: f30e31e6376b
+    last_write_checksum: sha1:72227c48d88aabba6665bea75a051bfdac953f80
+    pristine_git_object: 63a274842bd8811b4aa16c67f5fdd2c35f12a9dd
+  docs/models/accountstransactionsresponsebody.md:
+    id: 9e23d472c862
+    last_write_checksum: sha1:df4c6622e3e77aab20a456452884e55236a6c8fc
+    pristine_git_object: 27ae57913dcb5b5704930d5a34f9b1b021595806
+  docs/models/authorisationsetupdetailsdata.md:
+    id: 68fe0568a726
+    last_write_checksum: sha1:33e2579d81dc30a628faf6968e53d6742a9bee28
+    pristine_git_object: 62e016f856b7edffa720b250d83262373379ee0d
+  docs/models/authorisationsetupdetailslinks.md:
+    id: b0dfcefdf390
+    last_write_checksum: sha1:305f9c7f1a57333886a6f0d5f6e9bf1381b95e62
+    pristine_git_object: 02ba4dcfe4dbf15503e4f25f8a2ce38ff30eb68f
+  docs/models/authorisationsetupdetailsmeta.md:
+    id: 0ce3453c9b4e
+    last_write_checksum: sha1:0bd53ac178880fa160f86c04d2e520153f648114
+    pristine_git_object: 71c21f791a505da56e4b86c81c98cae894485e92
+  docs/models/authorisationsetupdetailsrequest.md:
+    id: a92eb310c3d0
+    last_write_checksum: sha1:f24befd223d70201690c98f9f0ad5cdd70bc2ff2
+    pristine_git_object: f226de9fc16d79b23cd342fde0e407051a2367b1
+  docs/models/authorisationsetupdetailsresponsebody.md:
+    id: 89479633925b
+    last_write_checksum: sha1:93f89f89e06e14f8cd29424300db7753996dd48a
+    pristine_git_object: 1aae54dde2c30ac3b9b9d435f2325bd1476355b2
+  docs/models/authoriserslista.md:
+    id: ad45e99eea67
+    last_write_checksum: sha1:4f9bb12fd160aff7a439c9b0ed3fb047d5e36906
+    pristine_git_object: e6fd6c46dc32599046b39fb7a09912e0f487d72f
+  docs/models/authoriserslistb.md:
+    id: 8f2c2e357b66
+    last_write_checksum: sha1:6b336d3ca176b4c5a87b79442754cd4a762e27bb
+    pristine_git_object: 71c4fea4000015053f6b7296a44bbf4dae22955b
+  docs/models/balancedata.md:
+    id: d1accf379d33
+    last_write_checksum: sha1:6780443aeaa114a8cf003595fb6eca445f36089c
+    pristine_git_object: 01ee1b6c6c6b14f2a2c6d300b405ec5008c86aab
+  docs/models/balancelinks.md:
+    id: 8c7c8d6e541f
+    last_write_checksum: sha1:baa43ad80928d487768e090846a673696954613d
+    pristine_git_object: 0ebcd54ce08edab6b7a55a3048ab20fb43249400
+  docs/models/balancemeta.md:
+    id: 1331e89878a1
+    last_write_checksum: sha1:d6c14926f5faa98ea6c3468f140e116764f4be6b
+    pristine_git_object: 41eafacceab79f2b73d7084d6d72c454f2999031
+  docs/models/balancerequest.md:
+    id: f5c65a164b15
+    last_write_checksum: sha1:f4f05f8750d7511d0bcf0161d75bc9e27e0a0652
+    pristine_git_object: 56e42835a262202a928782987af221b33c6bf244
+  docs/models/balanceresponsebody.md:
+    id: c0e8419b44a0
+    last_write_checksum: sha1:03656c5fb1c7854a85790e5b102a47b8f33b160d
+    pristine_git_object: 87d551d22e64f5874dd422439bc90dc08080c322
+  docs/models/beneficiariesdata.md:
+    id: 3e58418a8174
+    last_write_checksum: sha1:b051a48c0024a6d13178e7165e56395e22c66887
+    pristine_git_object: 795dfc966c6ef2c75ef1d11a7c26e1a9491fa4f6
+  docs/models/beneficiarieslinks.md:
+    id: 9597c55add39
+    last_write_checksum: sha1:1d92d6f5a129c211908da046833d818bf72f0d73
+    pristine_git_object: 0aef1af83fda849ab6e28e239b050e45124aaabf
+  docs/models/beneficiariesmeta.md:
+    id: 3bd66e20b4b0
+    last_write_checksum: sha1:63fc51300a8af7d32350e8199b188025cde8375c
+    pristine_git_object: 9b243450ea6c7388747428ba4ab071b2d9bef6c4
+  docs/models/beneficiariesresponsebody.md:
+    id: facc4d4a09ba
+    last_write_checksum: sha1:681f82d96390f6d7fe0e673d40f1cbcbeaad0eba
+    pristine_git_object: 666194f005ea8c70830e5e2968e7e908ea5a2210
+  docs/models/beneficiarycategoriesdata.md:
+    id: ab49af729277
+    last_write_checksum: sha1:d20425d93aff5ef73d125f523c32c9176bc65558
+    pristine_git_object: 53cc21fb886cb3544311500eadd78e433f917fd8
+  docs/models/beneficiarycategorieslinks.md:
+    id: b872e1e7a6de
+    last_write_checksum: sha1:9eb20ce57753dd77ffa9d75008c9acc368f97a7e
+    pristine_git_object: b38b307bd70da4c0d5c22cef2aac11af807e3d62
+  docs/models/beneficiarycategoriesmeta.md:
+    id: d32e2daa60c5
+    last_write_checksum: sha1:87aa79cf5cfddb9408602e45f504c0fb2ff55e71
+    pristine_git_object: bbac379c8e7db3651c2788de23a25fa9fc0e9bf9
+  docs/models/beneficiarycategoriesresponsebody.md:
+    id: e6dc65770bce
+    last_write_checksum: sha1:d275dcd4b99530fe9a5c964fed49ed192f508f1f
+    pristine_git_object: 7f69b2bc485a2c916ad0ea49f7b251f84837db2c
+  docs/models/data.md:
+    id: 9a31987caf78
+    last_write_checksum: sha1:b593962e42695faf712d46cdd76c2118d03aa213
+    pristine_git_object: 4c79bebd673c2423e80ce449b99280a4f491abff
+  docs/models/documentrequest.md:
+    id: 5e3ac001f058
+    last_write_checksum: sha1:47343930edffe3187d6b3e87b8b99a225d2ab01c
+    pristine_git_object: 5455fceb0b4ac4986adeda591e0946e77d6ec973
+  docs/models/documentsdata.md:
+    id: 3868d81fc86a
+    last_write_checksum: sha1:144972fbf17d81671fe4a620d4ffb77c95880635
+    pristine_git_object: 3ece39a9c2995894dd5a6c539d3c27dc0385a49f
+  docs/models/documentslinks.md:
+    id: ba38c623479d
+    last_write_checksum: sha1:4f97f0b38829a1ca9d7c6291eb26dd1c3e4733af
+    pristine_git_object: 11a2c5f98543ab3e9b9de27fbd5d1fb5556687a2
+  docs/models/documentsmeta.md:
+    id: 7d68b5f2a42e
+    last_write_checksum: sha1:e21d35758ad0a245e4af4cb6719a28514186fa9f
+    pristine_git_object: a10c67d3e74e07b9543c9a833ed91eeb20ea16bb
+  docs/models/documentsrequest.md:
+    id: 17961284d030
+    last_write_checksum: sha1:5bf090604069538b37518e55e2b6bab5b1d01db5
+    pristine_git_object: b0efcc8db1c7ddcbe7bbc53ce6a1fcc95cb2a519
+  docs/models/documentsresponsebody.md:
+    id: d5fb11f8bdec
+    last_write_checksum: sha1:d75b38fd5cef1dba873e28cea2bfe8a9974d6d09
+    pristine_git_object: d9214309587c0038c25fca05f7e1a80fffae31f5
+  docs/models/links.md:
+    id: 6ee87effbf22
+    last_write_checksum: sha1:2c28ebb274144b7d8c34e0918ff5ecab28a746c6
+    pristine_git_object: 358125089621205a73d14e3d7534af3aba38c523
+  docs/models/meta.md:
+    id: b5731935642a
+    last_write_checksum: sha1:482bb1d0baacd7d6c183b3a67a4a21b838fcf899
+    pristine_git_object: 725d7d96b9eec64cd33923eb24aba747ef9245de
+  docs/models/paybeneficiarydata.md:
+    id: e51dae444dfb
+    last_write_checksum: sha1:92d1d3096a114fb640752acc3f3aff831a9edc88
+    pristine_git_object: 5117f8e0bb66eb0ee3df50843545e6db25b7bc42
+  docs/models/paybeneficiarylinks.md:
+    id: 78afc5b82717
+    last_write_checksum: sha1:8dd37446945517c7d872b3880a32471385bd3696
+    pristine_git_object: b88e6d3fe7ebbb6613986b68e20f839bc744ce36
+  docs/models/paybeneficiarymeta.md:
+    id: 887f2699aa6b
+    last_write_checksum: sha1:02aac0b189c6003fb8a03e10f16792bfc6223dd9
+    pristine_git_object: 7a8fbd839a6ad4d394eb1bc6491ccc4accf13963
+  docs/models/paybeneficiaryrequest.md:
+    id: 28fdad64d95b
+    last_write_checksum: sha1:a48805d36614d2f98619a55cf15ef25fbcb01fce
+    pristine_git_object: 597a31caade7af3b7237a8286e667c4348594100
+  docs/models/paybeneficiaryrequestbody.md:
+    id: dd06b84103bf
+    last_write_checksum: sha1:823438675f88a7e2180b08d66d2277d52efaa7c4
+    pristine_git_object: 7bb58bbecb0b5f3bec3ccc2dac095670bf1ba1d1
+  docs/models/paybeneficiaryresponsebody.md:
+    id: ee030617eedb
+    last_write_checksum: sha1:06dcdec8b50953416db893335a77dc8a56649bd3
+    pristine_git_object: 577d822ce10f82679203112889d24543523071c9
+  docs/models/paybeneficiarytransferresponses.md:
+    id: 91f377f42592
+    last_write_checksum: sha1:94b47d13fd129bcbd1f3fd433850b13a03c9db86
+    pristine_git_object: 7c9f8720e02dbd102d3d41384e88c299fc81cfa2
+  docs/models/paymentlist.md:
+    id: a31036c73767
+    last_write_checksum: sha1:fcef551e6b593faea304b50adf990d197e3657b7
+    pristine_git_object: d85162fba7c63625b7a35607ba0f92fdd0b01a5e
+  docs/models/pendingtransaction.md:
+    id: 1d2dd79e1569
+    last_write_checksum: sha1:745cf0bfa80b935a064ad52b732b7cb486b3fe53
+    pristine_git_object: 432bffb0e4a871d9a8b0cda4efff4936cfdd729c
+  docs/models/period.md:
+    id: bb84ae146fc6
+    last_write_checksum: sha1:33541a57cb15d9db2aa06541f92138eebaec25c0
+    pristine_git_object: e1373d129da80a4693fed1c52dd99b9f14185253
+  docs/models/profileaccountsdata.md:
+    id: d09105e7a529
+    last_write_checksum: sha1:cfb78eed93fced6e66989826b0bab1186a907c4b
+    pristine_git_object: 2bffed2ffc66d537e47f7a1a8dcf4852fb9a539b
+  docs/models/profileaccountslinks.md:
+    id: 02db1a172740
+    last_write_checksum: sha1:34a8e564f79a011aaf45f5bbfe40ba7892743945
+    pristine_git_object: 348a97cebf60ddcb1b4bd3b8297ccf8a2683791e
+  docs/models/profileaccountsmeta.md:
+    id: b8222f0ded57
+    last_write_checksum: sha1:47ec6ea3a38a7f9ae8ebd3e292120ef5032d08b0
+    pristine_git_object: 7fc59fad36868eb564995d4f36e1b1287ebc942f
+  docs/models/profileaccountsrequest.md:
+    id: fefce7a4479b
+    last_write_checksum: sha1:b4623486b17e31b38598dadf113d929a554d7440
+    pristine_git_object: 40df17fae01fddd5ff83e2395f4fec90a44470a7
+  docs/models/profileaccountsresponsebody.md:
+    id: e9c87a34cf4d
+    last_write_checksum: sha1:cbc06f71c9018fadcbdbd2d4298f608425a806d9
+    pristine_git_object: d6b1e9e07fb296b0775c614c4aebdcb8b09f6b48
+  docs/models/profilebenefiariesdata.md:
+    id: b8e1e087a10d
+    last_write_checksum: sha1:23f5f0acc3ecdca2c4b0cc7d32d53a398d83f523
+    pristine_git_object: 91f750cfe614f1378ab43e8c7ad1b9399bdf02a7
+  docs/models/profilebenefiarieslinks.md:
+    id: fab71bee3504
+    last_write_checksum: sha1:2fdc87171e82afc8f1021843fb0a962094edb523
+    pristine_git_object: dc678a9d0fe2b4fcd6c374642af80d9f6bb8e261
+  docs/models/profilebenefiariesmeta.md:
+    id: ca8e5867cc73
+    last_write_checksum: sha1:cde5fb1ff9673acb61a89aced73a5e9da2359a47
+    pristine_git_object: 8e0cbfafe51fc4cdac5bcf8c640bb0ad3a9e4fb4
+  docs/models/profilebenefiariesrequest.md:
+    id: 3222b00e45e2
+    last_write_checksum: sha1:df2bc045c9fb0e05cfceeb5fe065e33785535e80
+    pristine_git_object: 93e5548385cc533ddc2a7b48e3df7c52e0801438
+  docs/models/profilebenefiariesresponsebody.md:
+    id: 5e0899aa8140
+    last_write_checksum: sha1:dc5e31487e8db3f07604fd46c2187f068df9613a
+    pristine_git_object: 438ecd527846a6b626491bc88c9e4195e5f25fb1
+  docs/models/profilesdata.md:
+    id: 8b95cfba2117
+    last_write_checksum: sha1:50eba2d05499b1262f1af2bdbbcd8290905e198b
+    pristine_git_object: 2a0da67503a327b5546231c8ea15ac2e99f21dfe
+  docs/models/profileslinks.md:
+    id: ccaf936de644
+    last_write_checksum: sha1:ce3b1560f8bc2705dfb98c6a5aa40a51b9b691e3
+    pristine_git_object: fcade80fa1bba411809f1629c03e8708209186f8
+  docs/models/profilesmeta.md:
+    id: "177953105719"
+    last_write_checksum: sha1:e630bf3c372b18b8698761a5e200f37a78703e9d
+    pristine_git_object: 6b04b4436997056427032b4fac0a35614309ddd8
+  docs/models/profilesresponsebody.md:
+    id: 2ff5b089154e
+    last_write_checksum: sha1:e981491f5d133e52025093171ec124745a63ddfe
+    pristine_git_object: 7618a0c3a3e4b71437db531ed38cfc0928fd0d8e
+  docs/models/security.md:
+    id: 452e4d4eb67a
+    last_write_checksum: sha1:46434bf53d18d85f0ad09bae3e3f3725fb4317b9
+    pristine_git_object: d4e68399edf6b4427f4f56caebc4c9421121c10c
+  docs/models/status.md:
+    id: 959cd204aadf
+    last_write_checksum: sha1:6688ccd1a0fb5fc120dd638cd89c1e3e51b0dcc4
+    pristine_git_object: e17fe043b9e1d606910782ccff0bae661ac27156
+  docs/models/transactions.md:
+    id: 129cc5bccefb
+    last_write_checksum: sha1:5d4c88a541e94614d6b6ce40b4f3498d89340735
+    pristine_git_object: 255b5b7fccc31ee159ced7caa8c1a31b2ebb6019
+  docs/models/transferdata.md:
+    id: 8ac53bf5af27
+    last_write_checksum: sha1:4241b5ed67bb94906c88d3833010ad145da45019
+    pristine_git_object: b6bfda7c93e36d7926edcdd7b5b014171ae71547
+  docs/models/transferlinks.md:
+    id: 878236f7ad35
+    last_write_checksum: sha1:80d787810622da87103d495c9bd8c39ac2b58469
+    pristine_git_object: af604bee640b70c040e560ae1e9468ae233cbf64
+  docs/models/transferlist.md:
+    id: d60d2fa38d6a
+    last_write_checksum: sha1:72290748c341f50790b79fee08607ef2c7fe1317
+    pristine_git_object: 0a6301ffbd540c8c6c0dfe64e6206c99b925c5f9
+  docs/models/transfermeta.md:
+    id: a8d4c5c08cab
+    last_write_checksum: sha1:4180a21c98a32341481ad6e6ce16b05363511380
+    pristine_git_object: e09916115f4fcf0b61ed3a470156111ac40d15d3
+  docs/models/transferrequestbody.md:
+    id: 3a151caeb005
+    last_write_checksum: sha1:d2fd5f8f17ba8dfab181a4c11b391c40e3e4f4fb
+    pristine_git_object: 82d5ee13069ea99a44b1cf3d287882dbdc9052b5
+  docs/models/transferresponse.md:
+    id: 9cb2aedfd067
+    last_write_checksum: sha1:637a84b488f79f1cb6c92d2059eabc65d9c522ea
+    pristine_git_object: b375b7f7b1fcff9cde1d435a6581935c1192e614
+  docs/models/transferresponsebody.md:
+    id: b85b09487dc3
+    last_write_checksum: sha1:7701ff73b0ded18b0cd75227b6b6cab81a150fd4
+    pristine_git_object: e21b8b225f3edd42389205d9bcfddbee411ee770
+  docs/models/transferresponses.md:
+    id: 6ec02c9caa8c
+    last_write_checksum: sha1:b86b66533697e901652b424f1065218e73198333
+    pristine_git_object: ac8ff63a3e249683f02105458f59d9e240da1e1f
+  docs/models/transfertransferresponses.md:
+    id: deafc6bead37
+    last_write_checksum: sha1:e118c4d77d61fbf2c3c4b1d9fd47736946474072
+    pristine_git_object: 6cb3b2602e43860814386d1520baf30b6324d558
+  docs/models/transferv2data.md:
+    id: b2167158b20c
+    last_write_checksum: sha1:a4bb1795be06073c2f4b01d4fbbb3ea529e8a480
+    pristine_git_object: 31acd269ca11883dcc1bcea6dfb431f5492d77b2
+  docs/models/transferv2links.md:
+    id: 31c7eb99960e
+    last_write_checksum: sha1:329325dd5958a56bf568c25a0ac74f51fdcde07f
+    pristine_git_object: 21f6b1bc6dfc6c7749ddbe05c42f82bad9478c5c
+  docs/models/transferv2meta.md:
+    id: b57a819bf10b
+    last_write_checksum: sha1:6ec9cb4d9de717d280e0b24c1c957f437872b04b
+    pristine_git_object: aaff4c0c05c4100b5d6925b9fa366229fcb9163d
+  docs/models/transferv2request.md:
+    id: 97b25f3bc8db
+    last_write_checksum: sha1:854ce5e97e7d978e269ad33ba6997ad32b63febc
+    pristine_git_object: e162a6110c11274bd50c0472c9456ce6fe661773
+  docs/models/transferv2requestbody.md:
+    id: 17f3daf15111
+    last_write_checksum: sha1:3a5797c8c708592ae26314eeefc85db66cbbb844
+    pristine_git_object: fdf8638a232a7a0b2d611d1567ceebb1dfb132e9
+  docs/models/transferv2responsebody.md:
+    id: 08b98a9b6afd
+    last_write_checksum: sha1:5dcf625aa7788bc1be66e2bc87c3d5a31fc86bde
+    pristine_git_object: 0e7f99389132262c2809d91f76b74256b033277f
+  docs/models/transferv2transferlist.md:
+    id: ef4718a81633
+    last_write_checksum: sha1:44fb3e74c24ac7ee947fc3bc9e0ba76b8644d793
+    pristine_git_object: 34b9eb325bb1b3f3389f968f73f865816db70075
+  docs/models/type.md:
+    id: 98c32f09b2c8
+    last_write_checksum: sha1:61773b10f4db0a48c4d74cdd86930b1a936c62c6
+    pristine_git_object: 6fea2a99afedf9cfe1e432c697926288bd856cac
+  docs/models/utils/retryconfig.md:
+    id: 4343ac43161c
+    last_write_checksum: sha1:562c0f21e308ad10c27f85f75704c15592c6929d
+    pristine_git_object: 69dd549ec7f5f885101d08dd502e25748183aebf
+  docs/sdks/accounts/README.md:
+    id: d6c754b1ca96
+    last_write_checksum: sha1:39008163eac974574b51ec60d7e3da8ae032accb
+    pristine_git_object: 9cf1f9759c62eb0d62f589be308556adc7501e4f
+  docs/sdks/beneficiaries/README.md:
+    id: 71e356d281df
+    last_write_checksum: sha1:4cd94fa83b48bb4be235f3311c46012cf8f1f555
+    pristine_git_object: 3af7124170e1b28a81e4d4713ce8933dc1f10487
+  docs/sdks/documents/README.md:
+    id: 9758e88a0a9d
+    last_write_checksum: sha1:9e68fe7772e0fe2372c1a69e2d62820f215f28fd
+    pristine_git_object: 14b9a56b7bb692ae7e26558275a322ab8503b45a
+  docs/sdks/interaccounttransfers/README.md:
+    id: 4bbf64740a5b
+    last_write_checksum: sha1:3bb66b2d6559588a4365bf0d9a4e1f79be3acc38
+    pristine_git_object: b6f42b70a3a95453df03b8fb53493504f7c88b52
+  docs/sdks/profiles/README.md:
+    id: 4079393d33e5
+    last_write_checksum: sha1:3c32fe9f2bb2406b29049d26f017f39bcee19b09
+    pristine_git_object: 3c3f1eee9ea0a4a7dbd006eaccbd7bb6ca955fcf
+  poetry.toml:
+    id: a81ade82122a
+    last_write_checksum: sha1:2242305e29dc6921bdf5b200aea5d4bf67830230
+    pristine_git_object: cd3492ac9dc870fdcf23dbd94fd1d40cc753cc8e
+  py.typed:
+    id: 258c3ed47ae4
+    last_write_checksum: sha1:8efc425ffe830805ffcc0f3055871bdcdc542c60
+    pristine_git_object: 3e38f1a929f7d6b1d6de74604aa87e3d8f010544
+  pylintrc:
+    id: 7ce8b9f946e6
+    last_write_checksum: sha1:02d374417b71ebbc1bfa08d3e2bb8855b2299bc7
+    pristine_git_object: f4af620789217ae70ea020db1c3cf0687bb9b0ae
+  pyproject.toml:
+    id: 5d07e7d72637
+    last_write_checksum: sha1:0de1105c5b750ff4f51d1a514188a786342280ec
+    pristine_git_object: 66e2cfd49c80c0c65403e44cc0d31c9f8aa25e3a
+  scripts/prepare_readme.py:
+    id: e0c5957a6035
+    last_write_checksum: sha1:45003114d0c3f7d0c0ac30a2b5df5248783461b7
+    pristine_git_object: 15d473681e2f6ded123c038b9395f7371614331d
+  scripts/publish.sh:
+    id: fe273b08f514
+    last_write_checksum: sha1:b31bafc19c15ab5ea925fdf8d5d4adce2b115a63
+    pristine_git_object: 2a3ead70ccc6228cbae1c5c8a319b1399f3804ea
+  src/investec_za_pb/__init__.py:
+    id: 5762ffbe0632
+    last_write_checksum: sha1:eec86b555287a1f966479167defba81fe37be83f
+    pristine_git_object: d028dd22db25a8dfa0f8c44641ceed256e9d9e46
+  src/investec_za_pb/_hooks/__init__.py:
+    id: 111e697656ca
+    last_write_checksum: sha1:45a380490e968d8d95994dd97554ac60eeb6ae60
+    pristine_git_object: e763be4b171bbcf9c16caeaf381f8c92ce8d8e6e
+  src/investec_za_pb/_hooks/oauth2scopes.py:
+    id: c4839b011832
+    last_write_checksum: sha1:4ee830ed12de86dbe77be14eb9ca0a05d07f5a49
+    pristine_git_object: 5e258a303346f6d13fd8b2425450f91c5c85cc3d
+  src/investec_za_pb/_hooks/sdkhooks.py:
+    id: 44b4bf18efa2
+    last_write_checksum: sha1:2e991b520df1eebb0e1341048a16d3ff2c9005d4
+    pristine_git_object: d924bab186222b4642bac2fb26ee4dd5c42072e0
+  src/investec_za_pb/_hooks/types.py:
+    id: 18b98e5db05c
+    last_write_checksum: sha1:6cf5a25f52b4ae3d87fed8e2bfdd0d8a21591ccd
+    pristine_git_object: a38d46953766cfb7e7077806fe11bb2176f0adb9
+  src/investec_za_pb/_version.py:
+    id: 228166b34b02
+    last_write_checksum: sha1:063114217a1ebf848f7222bc84383eab3e6d90fd
+    pristine_git_object: 77c5871511cb41c873a480a6493a88747a6c5828
+  src/investec_za_pb/accounts.py:
+    id: 07d9f4e142f4
+    last_write_checksum: sha1:7ed3c687435ffa2747c7754e0b54997c9b102875
+    pristine_git_object: 1f7b06f36528b1496afb2a6ebf6c7a012389c4f8
+  src/investec_za_pb/basesdk.py:
+    id: 03efd96950d6
+    last_write_checksum: sha1:81e8eae2315e0c7af353f90741e0cc1398a3db47
+    pristine_git_object: 2d87977bbfa8ffffd7c764ac6939a8f0e0b7df60
+  src/investec_za_pb/beneficiaries.py:
+    id: 7730b90aed41
+    last_write_checksum: sha1:ed51d8ff483b92a82d3f428235e81da27fecdc5c
+    pristine_git_object: c245a98b1163cddd9cca3ae8a51b434151cd8dfb
+  src/investec_za_pb/documents.py:
+    id: 9d9f242c84b9
+    last_write_checksum: sha1:395e0791ae0a2358ec212bc4a47a822e8219171f
+    pristine_git_object: 999be9835f314e4827077ca9231b0fd1d564b720
+  src/investec_za_pb/httpclient.py:
+    id: 808ba60b92dc
+    last_write_checksum: sha1:5e55338d6ee9f01ab648cad4380201a8a3da7dd7
+    pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
+  src/investec_za_pb/interaccounttransfers.py:
+    id: 46c5c7d36403
+    last_write_checksum: sha1:f514d78243db9c1d18d8e6504bd30e52f381bbb3
+    pristine_git_object: dd8fd8562e4c7080c8e6267d7f3de85eadcbe792
+  src/investec_za_pb/models/__init__.py:
+    id: 56d9b1f97c68
+    last_write_checksum: sha1:7b1b17890475fe5324076851ef81891f90bd36fa
+    pristine_git_object: 821a3ff9f6403a100857c9dcf6a64f15d2f93401
+  src/investec_za_pb/models/accountsop.py:
+    id: 59b27e3e60db
+    last_write_checksum: sha1:24ebcfb59f215ffe04e5f87cd3e3fedf81a33d32
+    pristine_git_object: 1bca8c37b2021e0041eab35f64694c0a2141046d
+  src/investec_za_pb/models/accountspendingtransactionsop.py:
+    id: 3d08e61c1ec7
+    last_write_checksum: sha1:1a867151e7617d7020960001262a69db90d27238
+    pristine_git_object: c8a568b39dbe9de3693e2487f14abd6aad003302
+  src/investec_za_pb/models/accountstransactionsop.py:
+    id: d769ef8167ce
+    last_write_checksum: sha1:5363bc1b9e75906e00ec1b75cd0f62fe6cf76fb9
+    pristine_git_object: 9f83328a73c19a981fd33868c792dba535ddeb0c
+  src/investec_za_pb/models/apierror.py:
+    id: 4bf6328198e6
+    last_write_checksum: sha1:817e99b44da44f302e32e88708b1f051fcb83ffa
+    pristine_git_object: 9e7acae8d5f01a937bd7db48a18c0c05bcbfc8f0
+  src/investec_za_pb/models/authorisationsetupdetailsop.py:
+    id: 1a45e9f7f63b
+    last_write_checksum: sha1:8c3eea8417e507e8115dbb313762bc693c244cd9
+    pristine_git_object: f7f9a6bf9a786db2afb851570dde2cc55a836fa2
+  src/investec_za_pb/models/balanceop.py:
+    id: 3fdd924d2105
+    last_write_checksum: sha1:156ecad5283fd845dba11e023e2c13253cfddb8c
+    pristine_git_object: e14024c1e59e083af31139118b581996c27fabc8
+  src/investec_za_pb/models/beneficiariesop.py:
+    id: 44a36304831b
+    last_write_checksum: sha1:626c31a066f14142624f825f372cfbfec56320a7
+    pristine_git_object: 19fb0d688ae5117bdd8ef988cb2174498873707d
+  src/investec_za_pb/models/beneficiarycategoriesop.py:
+    id: 843e12709245
+    last_write_checksum: sha1:527b38a5ba0d2d899cb384382f4520830397b4a9
+    pristine_git_object: 891b5ec8bbcf50c383d1f46bf091a7389ebcd81d
+  src/investec_za_pb/models/documentop.py:
+    id: c7de7c707af8
+    last_write_checksum: sha1:60c4cf48df0b364753f0944068517a474199e341
+    pristine_git_object: ef4c2e106e754397aa8db962776b88410106fc89
+  src/investec_za_pb/models/documentsop.py:
+    id: e4db8ec80ffb
+    last_write_checksum: sha1:982f73969b4adad999f5d0c2598b787889595794
+    pristine_git_object: b65ddfc6ce533f1f17be7da08e263a58d54b6232
+  src/investec_za_pb/models/investecerror.py:
+    id: f9c18d50f371
+    last_write_checksum: sha1:65e60dd3015a34ef4718106add12f2fceb2c2e29
+    pristine_git_object: 97c90cad643cc5abf22ae1bc75092a7bd488c062
+  src/investec_za_pb/models/no_response_error.py:
+    id: 24d108509f0f
+    last_write_checksum: sha1:7f326424a7d5ae1bcd5c89a0d6b3dbda9138942f
+    pristine_git_object: 1deab64bc43e1e65bf3c412d326a4032ce342366
+  src/investec_za_pb/models/paybeneficiaryop.py:
+    id: 30d3e6f88263
+    last_write_checksum: sha1:1f385f08b3e886843f180d0349e6c05c974fbadd
+    pristine_git_object: 2f5a4383b5cd694d840a9d0015be0f4e8d817b01
+  src/investec_za_pb/models/profileaccountsop.py:
+    id: 4c1361af27fa
+    last_write_checksum: sha1:b6e824a11405c5999a60314429ebdd37c35e6125
+    pristine_git_object: 83e9c59be4d9f619413718ffed2c306ff557be5b
+  src/investec_za_pb/models/profilebenefiariesop.py:
+    id: cfabc0d4db60
+    last_write_checksum: sha1:2c80c94dc2575b7bf73182c8804303d72c7cf0eb
+    pristine_git_object: 4bbe5597bf166b08f1b70ff604d5eac5708037a9
+  src/investec_za_pb/models/profilesop.py:
+    id: 980c99b35bf1
+    last_write_checksum: sha1:28a68d1b2adfbd9b94358c78fba2121845ab9723
+    pristine_git_object: cbd88676e499c8c731b2d2b33de596e36aa91067
+  src/investec_za_pb/models/responsevalidationerror.py:
+    id: 6fd12bc5fd82
+    last_write_checksum: sha1:d99c779821a663197ecbf348fb06c64eb51c29c3
+    pristine_git_object: 237907f30da499e1b3b5455e8e562ae07766da7d
+  src/investec_za_pb/models/security.py:
+    id: b75d5ab69828
+    last_write_checksum: sha1:336e1440c9018e117bbe97b4f0818b04adfafe3c
+    pristine_git_object: 3679f30734d9381f9d65a4f486e3ad6b0649a62d
+  src/investec_za_pb/models/transferop.py:
+    id: 2abe50e50915
+    last_write_checksum: sha1:027787fb543cc2f2c5820bc41b1097a8206acd31
+    pristine_git_object: ad11be818ececeb8a25edc70f49d5e1ff190bc6a
+  src/investec_za_pb/models/transferv2op.py:
+    id: 45938b4405cd
+    last_write_checksum: sha1:0420c1226c92d1762033d53a511b996fc99c7917
+    pristine_git_object: 84d3910e3924f82bf995dcb5b9495be78f42aa75
+  src/investec_za_pb/profiles.py:
+    id: 669168ce9794
+    last_write_checksum: sha1:09909ed51d27b25d7a31bac42ac21c691f572a4b
+    pristine_git_object: afd385a129fa971f23b80d3267a9c45927c0cee1
+  src/investec_za_pb/py.typed:
+    id: 2ba4c6e5e195
+    last_write_checksum: sha1:8efc425ffe830805ffcc0f3055871bdcdc542c60
+    pristine_git_object: 3e38f1a929f7d6b1d6de74604aa87e3d8f010544
+  src/investec_za_pb/sdk.py:
+    id: 39da3a26215d
+    last_write_checksum: sha1:3a4a031649de0b66364ee310819d34d61fd8f81e
+    pristine_git_object: 8f1bd265175ac9d4b1b9ae9bed8f53ca639e2546
+  src/investec_za_pb/sdkconfiguration.py:
+    id: fe9dc74899a6
+    last_write_checksum: sha1:3a85c59195515f37669033ace0342e795d773d5d
+    pristine_git_object: 17fd0e79509ac5c52cb5e42837fcf83c5cea2da9
+  src/investec_za_pb/types/__init__.py:
+    id: 5069515ba036
+    last_write_checksum: sha1:f9ad14217f832e74f594285960125add50324be9
+    pristine_git_object: faa268137bc01c9d08cfadc4797017db48747a96
+  src/investec_za_pb/types/base64fileinput.py:
+    id: 83c75688afc7
+    last_write_checksum: sha1:1522687ae3398374c35710cad993a6e82b5ab99d
+    pristine_git_object: 862566fe2b1db830276b390e136e65090e5963d2
+  src/investec_za_pb/types/basemodel.py:
+    id: cba707cb6f21
+    last_write_checksum: sha1:10d84aedeb9d35edfdadf2c3020caa1d24d8b584
+    pristine_git_object: a9a640a1a7048736383f96c67c6290c86bf536ee
+  src/investec_za_pb/utils/__init__.py:
+    id: ee23f8cc5d86
+    last_write_checksum: sha1:0f93d821f9cb3e061ea125d881bb6f61166738dd
+    pristine_git_object: aded7597c2bbc4e3fa7f555755d894671ac57741
+  src/investec_za_pb/utils/annotations.py:
+    id: b95c635d03f7
+    last_write_checksum: sha1:a4824ad65f730303e4e1e3ec1febf87b4eb46dbc
+    pristine_git_object: 12e0aa4f1151bb52474cc02e88397329b90703f6
+  src/investec_za_pb/utils/datetimes.py:
+    id: 771def76fe9f
+    last_write_checksum: sha1:c721e4123000e7dc61ec52b28a739439d9e17341
+    pristine_git_object: a6c52cd61bbe2d459046c940ce5e8c469f2f0664
+  src/investec_za_pb/utils/dynamic_imports.py:
+    id: 6cb62b947477
+    last_write_checksum: sha1:a1940c63feb8eddfd8026de53384baf5056d5dcc
+    pristine_git_object: 673edf82a97d0fea7295625d3e092ea369a36b79
+  src/investec_za_pb/utils/enums.py:
+    id: 6f7ed93a4f60
+    last_write_checksum: sha1:bc8c3c1285ae09ba8a094ee5c3d9c7f41fa1284d
+    pristine_git_object: 3324e1bc2668c54c4d5f5a1a845675319757a828
+  src/investec_za_pb/utils/eventstreaming.py:
+    id: 1788c0caf0a4
+    last_write_checksum: sha1:7d1dc68f8b48486ab646653aa05cc38752e1f912
+    pristine_git_object: a8d4fe5cc88d3c7337339e1b36a61bbf7ca8c4eb
+  src/investec_za_pb/utils/forms.py:
+    id: 8ea1850f560f
+    last_write_checksum: sha1:a971cdb120ad3d416d296d5d0ad89e4808350a7f
+    pristine_git_object: fdf0dc9b2a67bca773eefe6b471498cccaa83424
+  src/investec_za_pb/utils/headers.py:
+    id: b9b632424e54
+    last_write_checksum: sha1:7c6df233ee006332b566a8afa9ce9a245941d935
+    pristine_git_object: 37864cbbbc40d1a47112bbfdd3ba79568fc8818a
+  src/investec_za_pb/utils/logger.py:
+    id: c27b81742201
+    last_write_checksum: sha1:a0cbc07392b6f8bda4752744855d1d30f204c67a
+    pristine_git_object: 9ed81662748f94dea827f13e1449ba7535bc4e71
+  src/investec_za_pb/utils/metadata.py:
+    id: 1f5e8711d5fc
+    last_write_checksum: sha1:e703e5cbb5255144aacf86898d1420529afaaff8
+    pristine_git_object: 5abddd588837ac297050ca3b543627faadb350a9
+  src/investec_za_pb/utils/queryparams.py:
+    id: fb67cb92d349
+    last_write_checksum: sha1:b94c3f314fd3da0d1d215afc2731f48748e2aa59
+    pristine_git_object: c04e0db82b68eca041f2cb2614d748fbac80fd41
+  src/investec_za_pb/utils/requestbodies.py:
+    id: 22e7e316900a
+    last_write_checksum: sha1:e1fef575283b7fe7fe2ad392dbbb3fb105309124
+    pristine_git_object: 591415af8e64baa410627b507d2740afb5387d13
+  src/investec_za_pb/utils/retries.py:
+    id: c43f7e9d8c05
+    last_write_checksum: sha1:3585b891142f30a597fbf7a2f0340700babef8e4
+    pristine_git_object: ca7b59efebbbd9545744d0207ef42725c4cc5143
+  src/investec_za_pb/utils/security.py:
+    id: df0ec7ae9b1a
+    last_write_checksum: sha1:552bdaa9d1d4c75155c67b08f51f58b7de598b68
+    pristine_git_object: ac06849903cb94af64b3c719138f479105c0e4ed
+  src/investec_za_pb/utils/serializers.py:
+    id: 1e0ec40531b6
+    last_write_checksum: sha1:7485f1425b0661fd84836186570df90207eec6af
+    pristine_git_object: 1031ed930bad5ece220cf7416a56c29f40f0588b
+  src/investec_za_pb/utils/unmarshal_json_response.py:
+    id: dca9746ce180
+    last_write_checksum: sha1:f437e36dbd0d5e1876158924e84f0f0c3240aa08
+    pristine_git_object: 8b3c14528182c31fb759636ab22f52d3b270996e
+  src/investec_za_pb/utils/url.py:
+    id: 6d91c517cbd8
+    last_write_checksum: sha1:6479961baa90432ca25626f8e40a7bbc32e73b41
+    pristine_git_object: c78ccbae426ce6d385709d97ce0b1c2813ea2418
+  src/investec_za_pb/utils/values.py:
+    id: a77e69df5c90
+    last_write_checksum: sha1:acaa178a7c41ddd000f58cc691e4632d925b2553
+    pristine_git_object: dae01a44384ac3bc13ae07453a053bf6c898ebe3
+examples:
+  accounts:
+    speakeasy-default-accounts:
+      responses:
+        "200":
+          application/json: {"data": {}, "links": {"self": "<value>"}, "meta": {}}
+  balance:
+    speakeasy-default-balance:
+      parameters:
+        path:
+          accountId: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"accountId": "<id>", "currentBalance": 8220.14, "availableBalance": 6651.63, "budgetBalance": 6329.76, "straightBalance": 1075.08, "cashBalance": 6333.95, "currency": "New Leu"}, "links": {"self": "<value>"}, "meta": {}}
+  accountsTransactions:
+    speakeasy-default-accounts-transactions:
+      parameters:
+        path:
+          accountId: "<id>"
+        query:
+          fromDate: "2021-05-01"
+          toDate: "2021-06-01"
+          transactionType: "FeesAndInterest"
+      responses:
+        "200":
+          application/json: {"data": {}, "links": {"self": "<value>"}, "meta": {}}
+  accountsPendingTransactions:
+    speakeasy-default-accounts-pending-transactions:
+      parameters:
+        path:
+          accountId: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {}, "links": {"self": "<value>"}, "meta": {}}
+  profileaccounts:
+    speakeasy-default-profileaccounts:
+      parameters:
+        path:
+          profileid: "10190798011073"
+      responses:
+        "200":
+          application/json: {"data": [{"accountId": "<id>", "accountNumber": "<value>", "accountName": "<value>", "referenceName": "<value>", "productName": "<value>", "kycCompliant": false, "profileId": "<id>", "profileName": "<value>"}], "links": {"self": "<value>"}, "meta": {}}
+  authorisationsetupdetails:
+    speakeasy-default-authorisationsetupdetails:
+      parameters:
+        path:
+          profileid: "4643233712010169349094403"
+          accountid: "10190798011073"
+      responses:
+        "200":
+          application/json: {"data": {}, "meta": {}, "links": {"self": "<value>"}}
+  profilebenefiaries:
+    speakeasy-default-profilebenefiaries:
+      parameters:
+        path:
+          profileid: "4643233712010169349094403"
+          accountid: "10190798011073"
+      responses:
+        "200":
+          application/json: {"data": [], "meta": {}, "links": {"self": "<value>"}}
+  transfer:
+    speakeasy-default-transfer:
+      requestBody:
+        application/json: {"accountId": "XXXXXX"}
+      responses:
+        "200":
+          application/json: {"data": {}, "meta": {}, "links": {"self": "<value>"}}
+  transferv2:
+    speakeasy-default-transferv2:
+      parameters:
+        path:
+          accountId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"data": {}, "meta": {}, "links": {"self": "<value>"}}
+  payBeneficiary:
+    speakeasy-default-pay-beneficiary:
+      parameters:
+        path:
+          accountId: "3353431574710163189587446"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"data": {}, "meta": {}, "links": {"self": "<value>"}}
+  beneficiaries:
+    speakeasy-default-beneficiaries:
+      responses:
+        "200":
+          application/json: {"data": [], "meta": {}, "links": {"self": "<value>"}}
+  beneficiaryCategories:
+    speakeasy-default-beneficiary-categories:
+      responses:
+        "200":
+          application/json: {"data": {}, "meta": {}, "links": {"self": "<value>"}}
+  profiles:
+    speakeasy-default-profiles:
+      responses:
+        "200":
+          application/json: {"data": [], "meta": {}, "links": {"self": "<value>"}}
+  documents:
+    speakeasy-default-documents:
+      parameters:
+        path:
+          accountId: "<id>"
+        query:
+          fromDate: "2023-04-01"
+          toDate: "2023-06-01"
+      responses:
+        "200":
+          application/json: {"data": [], "meta": {}, "links": {"self": "<value>"}}
+  document:
+    speakeasy-default-document:
+      parameters:
+        path:
+          accountId: "<id>"
+          documentType: "<value>"
+          documentDate: "<value>"
+examplesVersion: 1.0.2
+generatedTests: {}
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -191,124 +971,3 @@ generatedFiles:
   - src/investec_za_pb/utils/serializers.py
   - src/investec_za_pb/utils/url.py
   - src/investec_za_pb/utils/values.py
-examples:
-  accounts:
-    "":
-      responses:
-        "200":
-          application/json: {"data": {"accounts": [{"accountId": "3353431574710163189587446", "accountNumber": "10101010101", "accountName": "Mr John Doe", "referenceName": "My Investec Private Bank Account", "productName": "Private Bank Account", "kycCompliant": true, "profileId": "10163189587443", "profileName": "My Profile"}]}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts"}, "meta": {"totalPages": 1}}
-  balance:
-    "":
-      parameters:
-        path:
-          accountId: "<id>"
-      responses:
-        "200":
-          application/json: {"data": {"accountId": "172878438321553632224", "currentBalance": 28857.76, "availableBalance": 98857.76, "budgetBalance": 0, "straightBalance": 0, "cashBalance": -10818415.98, "currency": "ZAR"}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/balance"}, "meta": {"totalPages": 1}}
-  accountsTransactions:
-    "":
-      parameters:
-        path:
-          accountId: "<id>"
-        query:
-          fromDate: "2021-05-01"
-          toDate: "2021-06-01"
-          transactionType: "FeesAndInterest"
-      responses:
-        "200":
-          application/json: {"data": {"transactions": [{"accountId": "172878438321553632224", "type": "DEBIT", "transactionType": "FeesAndInterest", "status": "POSTED", "description": "MONTHLY SERVICE CHARGE", "cardNumber": "", "postedOrder": 13379, "postingDate": "2020-06-11", "valueDate": "2020-06-10", "actionDate": "2020-11-10", "transactionDate": "2020-06-10", "amount": 535, "runningBalance": 28857.76}, {"accountId": "172878438321553632224", "type": "CREDIT", "transactionType": "FeesAndInterest", "status": "POSTED", "description": "CREDIT INTEREST", "cardNumber": "", "postedOrder": 13378, "postingDate": "2020-06-11", "valueDate": "2020-06-10", "actionDate": "2020-11-10", "transactionDate": "2020-06-10", "amount": 31.09, "runningBalance": 29392.76}]}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/transactions?fromDate={fromDate}&toDate={toDate}&transactionType={transactionType}"}, "meta": {"totalPages": 1}}
-  accountsPendingTransactions:
-    "":
-      parameters:
-        path:
-          accountId: "<id>"
-      responses:
-        "200":
-          application/json: {"links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/pending-transactions"}, "meta": {"totalPages": 1}}
-  profiles:
-    "":
-      responses:
-        "200":
-          application/json: {"data": [{"profileId": "10163189587444", "profileName": "Profile A", "defaultProfile": true}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles"}}
-  profileaccounts:
-    "":
-      parameters:
-        path:
-          profileid: "10190798011073"
-      responses:
-        "200":
-          application/json: {"data": [{"accountId": "172878438321553632224", "accountNumber": "10010206147", "accountName": "Mr John Doe", "referenceName": "My Investec Private Bank Account", "productName": "Private Bank Account", "kycCompliant": true, "profileId": "10163189587443", "profileName": "My Profile"}], "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/{profileid}/accounts"}, "meta": {"totalPages": 1}}
-  authorisationsetupdetails:
-    "":
-      parameters:
-        path:
-          profileid: "4643233712010169349094403"
-          accountid: "10190798011073"
-      responses:
-        "200":
-          application/json: {"data": {"numberOfAuthorisationRequired": "2", "period": [{"id": "1"}, {"id": "2"}, {"id": "3"}, {"id": "4"}, {"id": "5"}, {"id": "6"}, {"id": "7"}, {"id": "8"}, {"id": "9"}, {"id": "10"}, {"id": "0"}], "authorisersListA": [{"name": "Mr Auth 1"}, {"name": "Mr Auth 2"}, {"name": "All"}], "authorisersListB": [{"name": "Mr Auth 3"}, {"name": "Mr Auth 4"}, {"name": "All"}]}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/{profileid}/accounts/{accountId}/authorisationsetupdetails"}}
-  profilebenefiaries:
-    "":
-      parameters:
-        path:
-          profileid: "4643233712010169349094403"
-          accountid: "10190798011073"
-      responses:
-        "200":
-          application/json: {"data": [{"beneficiaryId": "MTAxOTAxOTyNTQMTU=", "accountNumber": "6241708900", "code": "250655", "bank": "FIRST NATIONAL BANK", "beneficiaryName": "Ad A AIA", "lastPaymentAmount": "10.00", "lastPaymentDate": "10/03/2019", "cellNo": "0987654321", "emailAddress": "QUwCV@someweb.co.za", "name": "DccIcIXI", "referenceAccountNumber": "NIC036", "referenceName": "amingFra ing Framin", "categoryId": "10164601247279", "profileId": "10163189587443", "fasterPaymentAllowed": true}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/{profileid}/accounts/{accountid}/beneficiaries"}}
-  transfer:
-    "":
-      requestBody:
-        application/json: {"accountId": "XXXXXX", "transferList": [{"beneficiaryAccountId": "XXXXXXXXXX", "amount": "10.12", "myReference": "Trans from PBA to PS", "theirReference": "Trans from PBA to PS"}]}
-      responses:
-        "200":
-          application/json: {"data": {"transferResponse": {"TransferResponses": [{"PaymentReferenceNumber": "UBP0012345678", "PaymentDate": "06/04/2022", "Status": "- No authorisation necessary <BR>- Payment/Transfer effective date 06/04/2022", "BeneficiaryName": "API transfer", "BeneficiaryAccountId": "XXXXXXXXXX", "AuthorisationRequired": false}], "ErrorMessage": null}}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/transfermultiple"}}
-  transferv2:
-    "":
-      parameters:
-        path:
-          accountId: "<id>"
-      requestBody:
-        application/json: {"transferList": [{"beneficiaryAccountId": "XXXXXXXXXX", "amount": "10.12", "myReference": "Trans from PBA to PS", "theirReference": "Trans from PBA to PS"}], "profileId": "10163189587443"}
-      responses:
-        "200":
-          application/json: {"data": {"TransferResponses": [{"PaymentReferenceNumber": "UBP0012345678", "PaymentDate": "06/04/2022", "Status": "- No authorisation necessary <BR>- Payment/Transfer effective date 06/04/2022", "BeneficiaryName": "API transfer", "BeneficiaryAccountId": "XXXXXXXXXX", "AuthorisationRequired": false}], "ErrorMessage": null}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/172878438321553632224/transfermultiple"}}
-  payBeneficiary:
-    "":
-      parameters:
-        path:
-          accountId: "3353431574710163189587446"
-      requestBody:
-        application/json: {"paymentList": [{"beneficiaryId": "MTAxMDEwMTAxMDEwMTA=", "amount": "101", "myReference": "Beneficiary payment to", "theirReference": "Payment from Sandbox"}]}
-      responses:
-        "200":
-          application/json: {"data": {"TransferResponses": [{"PaymentReferenceNumber": "UBP0012345678", "PaymentDate": "06/04/2022", "Status": "- No authorisation necessary <BR>- Payment/Transfer effective date 06/04/2022", "BeneficiaryName": "API transfer", "BeneficiaryAccountId": "XXXXXXXXXX", "AuthorisationRequired": false}], "ErrorMessage": null}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/paymultiple"}}
-  beneficiaries:
-    "":
-      responses:
-        "200":
-          application/json: {"data": [{"beneficiaryId": "MTAxOTAxOTyNTQMTU=", "accountNumber": "6241708900", "code": "250655", "bank": "FIRST NATIONAL BANK", "beneficiaryName": "Ad A AIA", "lastPaymentAmount": "10.00", "lastPaymentDate": "10/03/2019", "cellNo": "0987654321", "emailAddress": "QUwCV@someweb.co.za", "name": "DccIcIXI", "referenceAccountNumber": "NIC036", "referenceName": "amingFra ing Framin", "categoryId": "10164601247279", "profileId": "10163189587443", "fasterPaymentAllowed": true}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/profiles/10163189587443/accounts/3353431574710163189587446/beneficiaries"}}
-  beneficiaryCategories:
-    "":
-      responses:
-        "200":
-          application/json: {"data": {"id": "10164601247279", "isDefault": "true", "name": "Not Categorised"}, "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/beneficiarycategories"}}
-  documents:
-    "":
-      parameters:
-        path:
-          accountId: "<id>"
-        query:
-          fromDate: "2023-04-01"
-          toDate: "2023-06-01"
-      responses:
-        "200":
-          application/json: {"data": [{"documentType": "Statement", "documentDate": "2023-03-16"}, {"documentType": "Statement", "documentDate": "2023-02-16"}], "meta": {"totalPages": 1}, "links": {"self": "https://openapi.investec.com/za/pb/v1/accounts/{accountId}/documents?fromDate={fromDate}&toDate={toDate}"}}
-  document:
-    speakeasy-default-document:
-      parameters:
-        path:
-          accountId: "<id>"
-          documentType: "<value>"
-          documentDate: "<value>"
-generatedTests: {}

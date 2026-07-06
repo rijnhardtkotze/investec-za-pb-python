@@ -1,5 +1,4 @@
 # Beneficiaries
-(*beneficiaries*)
 
 ## Overview
 
@@ -17,16 +16,14 @@ Pay funds to one or multiple beneficiaries.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="payBeneficiary" method="post" path="/za/pb/v1/accounts/{accountId}/paymultiple" -->
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.beneficiaries.pay_multiple(account_id="3353431574710163189587446", payment_list=[
@@ -67,16 +64,14 @@ List of beneficiaries linked to the profile
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="beneficiaries" method="get" path="/za/pb/v1/accounts/beneficiaries" -->
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.beneficiaries.get_all()
@@ -108,16 +103,14 @@ List all the beneficiary categories available.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="beneficiaryCategories" method="get" path="/za/pb/v1/accounts/beneficiarycategories" -->
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.beneficiaries.get_categories()
