@@ -1,5 +1,4 @@
 # Accounts
-(*accounts*)
 
 ## Overview
 
@@ -19,16 +18,14 @@ Get a list of accounts with metadata regarding the account like Account name, Ac
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="accounts" method="get" path="/za/pb/v1/accounts" -->
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_all()
@@ -60,16 +57,14 @@ Obtain a specified account's balance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="balance" method="get" path="/za/pb/v1/accounts/{accountId}/balance" -->
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_balance(account_id="<id>")
@@ -102,16 +97,14 @@ Obtain a specified account's transactions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="accountsTransactions" method="get" path="/za/pb/v1/accounts/{accountId}/transactions" -->
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_transactions(account_id="<id>", from_date="2021-05-01", to_date="2021-06-01", transaction_type="FeesAndInterest")
@@ -148,16 +141,14 @@ Obtain a specified account's pending transactions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="accountsPendingTransactions" method="get" path="/za/pb/v1/accounts/{accountId}/pending-transactions" -->
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_pending_transactions(account_id="<id>")
@@ -190,16 +181,14 @@ List all the accounts for the profile specified.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="profileaccounts" method="get" path="/za/pb/v1/profiles/{profileid}/accounts" -->
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_profile_accounts(profileid="10190798011073")
@@ -232,16 +221,14 @@ List the authorisation setup details for the specified profile and accounts.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="authorisationsetupdetails" method="get" path="/za/pb/v1/profiles/{profileid}/accounts/{accountid}/authorisationsetupdetails" -->
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_authorization_setup(profileid="4643233712010169349094403", accountid="10190798011073")
@@ -275,16 +262,14 @@ List all the beneficiaries available for the profile and account specified.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="profilebenefiaries" method="get" path="/za/pb/v1/profiles/{profileid}/accounts/{accountid}/beneficiaries" -->
 ```python
-import investec_za_pb
 from investec_za_pb import Investec
 import os
 
+
 with Investec(
-    security=investec_za_pb.Security(
-        client_id=os.getenv("INVESTEC_CLIENT_ID", ""),
-        client_secret=os.getenv("INVESTEC_CLIENT_SECRET", ""),
-    ),
+    oauth2=os.getenv("INVESTEC_OAUTH2", ""),
 ) as investec:
 
     res = investec.accounts.get_profile_beneficiaries(profileid="4643233712010169349094403", accountid="10190798011073")
