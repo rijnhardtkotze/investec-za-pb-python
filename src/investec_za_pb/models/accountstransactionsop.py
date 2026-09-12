@@ -3,9 +3,10 @@
 from __future__ import annotations
 from datetime import datetime
 from enum import Enum
-from investec_za_pb.types import BaseModel
+from investec_za_pb.types import BaseModel, UNSET_SENTINEL
 from investec_za_pb.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -54,6 +55,24 @@ class AccountsTransactionsRequest(BaseModel):
         pydantic.Field(alias="includePending"),
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["fromDate", "toDate", "transactionType", "includePending"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class Type(str, Enum):
@@ -187,6 +206,38 @@ class Transactions(BaseModel):
     ] = None
     r"""A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "accountId",
+                "type",
+                "transactionType",
+                "status",
+                "description",
+                "cardNumber",
+                "postedOrder",
+                "postingDate",
+                "valueDate",
+                "actionDate",
+                "transactionDate",
+                "amount",
+                "runningBalance",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class AccountsTransactionsDataTypedDict(TypedDict):
     transactions: NotRequired[List[TransactionsTypedDict]]
@@ -194,6 +245,22 @@ class AccountsTransactionsDataTypedDict(TypedDict):
 
 class AccountsTransactionsData(BaseModel):
     transactions: Optional[List[Transactions]] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["transactions"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class AccountsTransactionsLinksTypedDict(TypedDict):
@@ -219,6 +286,22 @@ class AccountsTransactionsMeta(BaseModel):
 
     total_pages: Annotated[Optional[int], pydantic.Field(alias="totalPages")] = None
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["totalPages"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class AccountsTransactionsResponseBodyTypedDict(TypedDict):
     r"""Resource has been retrieved"""
@@ -240,3 +323,17 @@ class AccountsTransactionsResponseBody(BaseModel):
 
     meta: AccountsTransactionsMeta
     r"""Meta Data relevant to the payload"""
+
+
+try:
+    Transactions.model_rebuild()
+except NameError:
+    pass
+try:
+    AccountsTransactionsLinks.model_rebuild()
+except NameError:
+    pass
+try:
+    AccountsTransactionsMeta.model_rebuild()
+except NameError:
+    pass
