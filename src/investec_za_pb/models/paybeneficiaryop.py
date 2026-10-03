@@ -59,6 +59,24 @@ class PaymentList(BaseModel):
     )
     r"""If the payment requires authorisation this can be set to true if the beneficiary allows it from profiles/{profileid}/beneficiaries/{accountid}."""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["authoriserAId", "authoriserBId", "authPeriodId", "fasterPayment"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PayBeneficiaryRequestBodyTypedDict(TypedDict):
     payment_list: NotRequired[List[PaymentListTypedDict]]
@@ -68,6 +86,22 @@ class PayBeneficiaryRequestBody(BaseModel):
     payment_list: Annotated[
         Optional[List[PaymentList]], pydantic.Field(alias="paymentList")
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["paymentList"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PayBeneficiaryRequestTypedDict(TypedDict):
@@ -130,6 +164,31 @@ class PayBeneficiaryTransferResponses(BaseModel):
     ] = None
     r"""Boolean value describing if authorisation is required"""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "PaymentReferenceNumber",
+                "PaymentDate",
+                "Status",
+                "BeneficiaryName",
+                "BeneficiaryAccountId",
+                "AuthorisationRequired",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class PayBeneficiaryDataTypedDict(TypedDict):
     r"""Set of elements used to define the transfer status details."""
@@ -152,31 +211,26 @@ class PayBeneficiaryData(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["TransferResponses", "ErrorMessage"]
-        nullable_fields = ["ErrorMessage"]
-        null_default_fields = []
-
+        optional_fields = set(["TransferResponses", "ErrorMessage"])
+        nullable_fields = set(["ErrorMessage"])
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
-            serialized.pop(k, None)
+            val = serialized.get(k, serialized.get(n))
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -191,6 +245,22 @@ class PayBeneficiaryMeta(BaseModel):
     r"""Meta Data relevant to the payload"""
 
     total_pages: Annotated[Optional[int], pydantic.Field(alias="totalPages")] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["totalPages"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class PayBeneficiaryLinksTypedDict(TypedDict):
@@ -227,3 +297,29 @@ class PayBeneficiaryResponseBody(BaseModel):
 
     links: PayBeneficiaryLinks
     r"""Links relevant to the payload"""
+
+
+try:
+    PaymentList.model_rebuild()
+except NameError:
+    pass
+try:
+    PayBeneficiaryRequestBody.model_rebuild()
+except NameError:
+    pass
+try:
+    PayBeneficiaryTransferResponses.model_rebuild()
+except NameError:
+    pass
+try:
+    PayBeneficiaryData.model_rebuild()
+except NameError:
+    pass
+try:
+    PayBeneficiaryMeta.model_rebuild()
+except NameError:
+    pass
+try:
+    PayBeneficiaryLinks.model_rebuild()
+except NameError:
+    pass

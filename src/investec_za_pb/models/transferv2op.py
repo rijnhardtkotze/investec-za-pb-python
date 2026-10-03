@@ -44,6 +44,22 @@ class Transferv2RequestBody(BaseModel):
 
     profile_id: Annotated[Optional[str], pydantic.Field(alias="profileId")] = None
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["transferList", "profileId"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class Transferv2RequestTypedDict(TypedDict):
     account_id: str
@@ -105,6 +121,31 @@ class TransferResponses(BaseModel):
     ] = None
     r"""Boolean value describing if authorisation is required"""
 
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "PaymentReferenceNumber",
+                "PaymentDate",
+                "Status",
+                "BeneficiaryName",
+                "BeneficiaryAccountId",
+                "AuthorisationRequired",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
+
 
 class Transferv2DataTypedDict(TypedDict):
     r"""Set of elements used to define the transfer status details."""
@@ -126,31 +167,26 @@ class Transferv2Data(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["TransferResponses", "ErrorMessage"]
-        nullable_fields = ["ErrorMessage"]
-        null_default_fields = []
-
+        optional_fields = set(["TransferResponses", "ErrorMessage"])
+        nullable_fields = set(["ErrorMessage"])
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
-            serialized.pop(k, None)
+            val = serialized.get(k, serialized.get(n))
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
@@ -165,6 +201,22 @@ class Transferv2Meta(BaseModel):
     r"""Meta Data relevant to the payload"""
 
     total_pages: Annotated[Optional[int], pydantic.Field(alias="totalPages")] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["totalPages"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class Transferv2LinksTypedDict(TypedDict):
@@ -201,3 +253,29 @@ class Transferv2ResponseBody(BaseModel):
 
     links: Transferv2Links
     r"""Links relevant to the payload"""
+
+
+try:
+    Transferv2TransferList.model_rebuild()
+except NameError:
+    pass
+try:
+    Transferv2RequestBody.model_rebuild()
+except NameError:
+    pass
+try:
+    TransferResponses.model_rebuild()
+except NameError:
+    pass
+try:
+    Transferv2Data.model_rebuild()
+except NameError:
+    pass
+try:
+    Transferv2Meta.model_rebuild()
+except NameError:
+    pass
+try:
+    Transferv2Links.model_rebuild()
+except NameError:
+    pass
